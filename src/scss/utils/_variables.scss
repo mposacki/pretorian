@@ -1,13 +1,16 @@
 $colors: (
   light: #fff,
-  gray: #333333,
-  dark: #bcbcbc,
-  darker: #000,
 
-  blue: #5ab9b4,
-  blue--lighten: #68aba1,
-  pink: #ce0e6d,
-  blue--darken: #407ec9
+  black: #000,
+  black-light: #1d1d1b,
+
+  red: #be2830,
+
+  green: #002d22,
+  green-light: #084531,
+  green-light-2: #1c3b29,
+  green-light--active: #609b79,
+  green-lighten: #70a2ac,
 );
 
 $grid: (

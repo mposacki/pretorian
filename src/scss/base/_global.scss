@@ -10,10 +10,10 @@ html {
 
 body {
   position: relative;
-  font-family: 'Open-Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 *::selection {
-  background-color: map-get($colors, darker);
+  background-color: map-get($colors, green-light);
   color: map-get($colors, light);
 }

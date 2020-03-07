@@ -1,84 +1,92 @@
 .header {
-  position: relative;
-  transition: all .3s ease;
+  display: flex;
 
-  &__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 
-    background-image: linear-gradient(to bottom,
-      rgba(map-get($colors, darker), 1) 0%,
-      rgba(map-get($colors, darker), .8) 15%,
-      rgba(map-get($colors, darker), .45) 55%,
-      rgba(map-get($colors, light), .15) 100%
-    ),
-    url('../images/category-image-2x.png');
-    background-position: center center;
-    background-size: cover;
-    filter: blur(3px);
-  }
+  padding-left: 1rem;
+  padding-right: 1rem;
 
-  &__container {
-    @include container();
+  flex-direction: row;
+  align-items: center;
 
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
+  background-color: transparent;
 
-    @include breakpoint(xs) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-  }
-
-  &__anchor {
-    display: block;
-    margin-bottom: 1.5rem;
-
-    @include breakpoint(xs) {
-      margin-bottom: 0;
-    }
-  }
+  z-index: 20;
 
   &__logo {
-    width: 120px;
-    height: 30px;
+    margin-right: auto;
   }
 
-  &__bar {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
+  &__navi {
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    width: 90vw;
+    height: 100vh;
+    background-color: map-get($colors, light);
+    transition: left .35s ease-in-out;
 
-  &__nav {
-    order: 3;
-    width: 100%;
-    margin-top: 2rem;
-    display: none;
+    &--active {
+      left: 10vw;
+    }
 
     @include breakpoint(sm) {
-      display: block;
-    }
+      position: relative;
+      left: 0;
 
-    @include breakpoint(md) {
+      margin-left: .5rem;
+
       width: auto;
-    }
+      height: auto;
 
-    @include breakpoint(lg) {
-      order: 0;
-      margin-top: 0;
+      background-color: transparent;
     }
+  }
 
-    &.show {
+  &__navi-overlay {
+
+  }
+  &__navi-close {}
+
+  &__navi-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
+    padding: .5rem;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+
+    span {
       display: block;
-      animation: moveInTop .5s ease-in;
+      width: 100%;
+      height: 3px;
+      background-color: map-get($colors, light);
+      border-radius: .5rem;
+      transition: background-color .3s ease-in;
+
+      &:not(:last-child) {
+        margin-bottom: .3125rem;
+      }
     }
+
+    &--active {
+      span {
+        background-color: map-get($colors, green-light--active);
+      }
+    }
+
+    @include breakpoint(sm) {
+      display: none;
+    }
+  }
+
+  &__lang-switcher {
+    font-size: 0;
+    line-height: 1;
   }
 }

@@ -61,9 +61,9 @@
 }
 
 @mixin btn() {
-  border: 3px solid map-get($colors, gray);
-  background-color: map-get($colors, light);
-  color: map-get($colors, gray);
+  // border: 3px solid map-get($colors, gray);
+  // background-color: map-get($colors, light);
+  // color: map-get($colors, gray);
   text-transform: uppercase;
   font-weight: 700;
   padding: .5rem 1.75rem;
@@ -72,8 +72,8 @@
   cursor: pointer;
 
   &:hover {
-    background-color: map-get($colors, gray);
-    color: map-get($colors, light);
+    // background-color: map-get($colors, gray);
+    // color: map-get($colors, light);
   }
 
   &:active,

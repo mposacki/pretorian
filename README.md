@@ -1,6 +1,5 @@
-# Cupwiz
-
+# Pretorian
 
 1. yarn  /  npm install
 2. Dev -> gulp
-2. Prod -> gulp dist
+3. Prod -> gulp dist

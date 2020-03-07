@@ -12,20 +12,7 @@
 
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/layout';
 @import 'layout/main';
 
-@import 'components/breadcrumbs';
-@import 'components/menu-slider';
-@import 'components/pagination';
-@import 'components/search';
-@import 'components/toolbar';
-@import 'components/navigator';
-@import 'components/design';
-@import 'components/newsletter';
-@import 'components/product';
-@import 'components/patterns';
-@import 'components/customise';
-@import 'components/popup';
-@import 'components/smart-box';
-@import 'components/nav';
-
+@import 'components/navigation';
