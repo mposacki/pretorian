@@ -6,8 +6,9 @@
   left: 0;
   right: 0;
 
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
+
+  height: 9.375rem;
 
   flex-direction: row;
   align-items: center;
@@ -18,19 +19,28 @@
 
   &__logo {
     margin-right: auto;
+    width: 50px;
+    height: 80px;
+
+    @include breakpoint(sm) {
+      width: auto;
+      height: auto;
+    }
   }
 
   &__navi {
+    display: flex;
     position: fixed;
     top: 0;
-    left: 100vw;
-    width: 90vw;
-    height: 100vh;
+    right: -100%;
+    width: 90%;
+    height: 100%;
+    z-index: 40;
     background-color: map-get($colors, light);
-    transition: left .35s ease-in-out;
+    transition: right .35s ease-in-out;
 
     &--active {
-      left: 10vw;
+      right: 0;
     }
 
     @include breakpoint(sm) {
@@ -47,18 +57,69 @@
   }
 
   &__navi-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 30;
+    background-color: rgba(map-get($colors, black), .85);
+  }
+
+  &__navi-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: .5rem;
+
+    width: 3rem;
+    height: 3rem;
+
+    z-index: 50;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    @include breakpoint(sm) {
+      display: none;
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: map-get($colors, black);
+      border-radius: .5rem;
+
+      &:first-child {
+        transform: translateY(-50%) rotate(45deg);
+        margin-bottom: -4px;
+      }
+
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+    }
 
   }
-  &__navi-close {}
 
   &__navi-burger {
     display: flex;
+    position: relative;
+
     flex-direction: column;
     justify-content: center;
+
     margin-left: 1rem;
     padding: .5rem;
+
     width: 3rem;
     height: 3rem;
+
+    z-index: 40;
     cursor: pointer;
 
     span {

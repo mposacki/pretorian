@@ -1,5 +1,6 @@
 $colors: (
   light: #fff,
+  background-light: #dcffee,
 
   black: #000,
   black-light: #1d1d1b,
@@ -12,6 +13,9 @@ $colors: (
   green-light--active: #609b79,
   green-lighten: #70a2ac,
 );
+
+$ibmplexsans: 'IBM Plex Sans',
+sans-serif;
 
 $grid: (
   gutter: 1rem,

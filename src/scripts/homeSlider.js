@@ -14,7 +14,7 @@ $(document).ready(function () {
     speed: 1000,
     adaptiveHeight: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
     nextArrow: '<img class="home-slider__arrow home-slider__arrow--next" src="/assets/images/svg/arrow-category.svg">',
     prevArrow: '<img class="home-slider__arrow home-slider__arrow--prev" src="/assets/images/svg/arrow-category.svg">',
     responsive: [
