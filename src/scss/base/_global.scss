@@ -1,0 +1,19 @@
+html {
+  font-size: 93.75%;
+  overflow-x: hidden;
+
+  @include breakpoint(sm) {
+    font-size: 100%;
+  }
+
+}
+
+body {
+  position: relative;
+  font-family: 'Open-Sans', sans-serif;
+}
+
+*::selection {
+  background-color: map-get($colors, darker);
+  color: map-get($colors, light);
+}

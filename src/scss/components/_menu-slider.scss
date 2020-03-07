@@ -1,0 +1,92 @@
+.menu-slider {
+
+  &__container {
+    @include container();
+    padding-bottom: 3rem;
+
+    @include breakpoint(sm) {
+      padding-bottom: 5rem;
+    }
+  }
+
+  &__category {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+    color: map-get($colors, blue--lighten);
+
+    @include breakpoint(sm) {
+      margin-top: 2rem;
+      margin-bottom: .5rem;
+    }
+  }
+
+  &__content {
+    margin-top: 1rem;
+  }
+
+  &__link {
+    color: map-get($colors, light);
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  &__arrow {
+    width: 15px;
+    height: 30px;
+    cursor: pointer;
+
+    &--prev {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -100%) rotate(270deg);
+
+      @include breakpoint(sm) {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+
+    &--next {
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translate(50%, 100%) rotate(90deg);
+
+      @include breakpoint(sm) {
+        top: 50%;
+        right: 0;
+        bottom: initial;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .slick-slide {
+    font-size: 1.25rem;
+    text-align: center;
+
+    &.slick-center {
+      font-size: 1.75rem;
+
+      .menu-slider__link {
+        color: map-get($colors, blue--lighten);
+      }
+    }
+  }
+
+  .slick-track {
+
+    @include breakpoint(sm) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

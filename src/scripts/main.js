@@ -1,0 +1,2 @@
+import './homeSlider'
+import './teamSlider'

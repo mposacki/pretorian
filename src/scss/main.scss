@@ -1,0 +1,31 @@
+@import 'base/reset';
+
+@import 'utils/animations';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/variables';
+
+@import 'base/global';
+@import 'base/typography';
+
+@import 'vendors/slick';
+
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/main';
+
+@import 'components/breadcrumbs';
+@import 'components/menu-slider';
+@import 'components/pagination';
+@import 'components/search';
+@import 'components/toolbar';
+@import 'components/navigator';
+@import 'components/design';
+@import 'components/newsletter';
+@import 'components/product';
+@import 'components/patterns';
+@import 'components/customise';
+@import 'components/popup';
+@import 'components/smart-box';
+@import 'components/nav';
+

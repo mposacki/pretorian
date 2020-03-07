@@ -1,0 +1,88 @@
+.navigator {
+  background-color: map-get($colors, gray);
+
+  &__container {
+    @include container();
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 30;
+    padding: 5rem 1rem 3rem;
+
+    @include breakpoint(xs) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    @include breakpoint(md) {
+      padding: 5rem 1rem;
+    }
+  }
+
+  &__nav-box {
+    margin-bottom: 2rem;
+
+    @include breakpoint(xs) {
+      width: 50%;
+    }
+
+    @include breakpoint(md) {
+      width: auto;
+    }
+
+    &:first-child {
+      @include breakpoint(md) {
+        margin-left: 30%;
+      }
+    }
+  }
+
+  &__heading {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: map-get($colors, light);
+    margin-bottom: 1rem;
+  }
+
+  &__nav {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  &__nav-item {
+    margin-bottom: .5rem;
+
+    a {
+      color: map-get($colors, light);
+      transition: color .3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        color: darken(map-get($colors, light), 20%);
+      }
+
+      &:active,
+      &:focus {
+        color: darken(map-get($colors, light), 35%);
+        outline: 0;
+      }
+    }
+  }
+
+  &__logo {
+    width: 80px;
+    height: 28px;
+  }
+
+  &__logo-anchor {
+    position: absolute;
+    left: 1rem;
+    bottom: 1.5rem;
+  }
+}

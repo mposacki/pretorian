@@ -1,0 +1,84 @@
+.header {
+  position: relative;
+  transition: all .3s ease;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    background-image: linear-gradient(to bottom,
+      rgba(map-get($colors, darker), 1) 0%,
+      rgba(map-get($colors, darker), .8) 15%,
+      rgba(map-get($colors, darker), .45) 55%,
+      rgba(map-get($colors, light), .15) 100%
+    ),
+    url('../images/category-image-2x.png');
+    background-position: center center;
+    background-size: cover;
+    filter: blur(3px);
+  }
+
+  &__container {
+    @include container();
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+
+    @include breakpoint(xs) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  &__anchor {
+    display: block;
+    margin-bottom: 1.5rem;
+
+    @include breakpoint(xs) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__logo {
+    width: 120px;
+    height: 30px;
+  }
+
+  &__bar {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  &__nav {
+    order: 3;
+    width: 100%;
+    margin-top: 2rem;
+    display: none;
+
+    @include breakpoint(sm) {
+      display: block;
+    }
+
+    @include breakpoint(md) {
+      width: auto;
+    }
+
+    @include breakpoint(lg) {
+      order: 0;
+      margin-top: 0;
+    }
+
+    &.show {
+      display: block;
+      animation: moveInTop .5s ease-in;
+    }
+  }
+}

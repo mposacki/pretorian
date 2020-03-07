@@ -1,0 +1,24 @@
+.main {
+  background-color: map-get($colors, light);
+
+  &__toolbar {
+    @include container();
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+
+    &-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      flex-wrap: wrap;
+
+      justify-content: space-between;
+      align-items: center;
+
+      @include breakpoint(xs) {
+        flex-direction: row;
+      }
+    }
+  }
+}
