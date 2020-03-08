@@ -1,6 +1,4 @@
 .header {
-  display: flex;
-
   position: absolute;
   top: 0;
   left: 0;
@@ -10,12 +8,16 @@
 
   height: 9.375rem;
 
-  flex-direction: row;
-  align-items: center;
-
   background-color: transparent;
 
   z-index: 20;
+
+  &__container {
+    display: flex;
+
+    flex-direction: row;
+    align-items: center;
+  }
 
   &__logo {
     margin-right: auto;

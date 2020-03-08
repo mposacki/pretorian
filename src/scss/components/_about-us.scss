@@ -3,36 +3,29 @@
   background-color: map-get($colors, light);
   padding-top: 5rem;
   padding-bottom: 5rem;
+  z-index: 10;
 
   &:before {
-    display: block;
-    position: absolute;
-    top: -49px;
-    left: 0;
-    right: 0;
-    content: '';
-    height: 49px;
-    width: 100%;
-    background: url('../images/background-before.png') top center / cover no-repeat;
+    @include before-background();
   }
 
-  &__container {
-    text-align: center;
+  &:after {
+    @include after-background();
   }
 
   &__description {
     font-size: 1.125rem;
-    line-height: 1.2;
+    line-height: 1.35;
     font-family: $ibmplexsans;
     letter-spacing: 1px;
     margin: 0 auto 1.5rem;
 
-    @include breakpoint(sm) {
-      width: 90%;
-    }
+    // @include breakpoint(sm) {
+    //   width: 90%;
+    // }
 
-    @include breakpoint(md) {
-      width: 85%;
-    }
+    // @include breakpoint(md) {
+    //   width: 85%;
+    // }
   }
 }

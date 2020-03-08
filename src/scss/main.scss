@@ -4,10 +4,12 @@
 @import 'utils/functions';
 @import 'utils/mixins';
 @import 'utils/variables';
+@import 'utils/helpers';
 
 @import 'base/global';
 @import 'base/typography';
 
+// @import 'vendors/glider';
 @import 'vendors/slick';
 
 @import 'layout/header';
@@ -18,4 +20,5 @@
 @import 'components/navigation';
 @import 'components/home-slider';
 @import 'components/about-us';
-@import 'components/team';
+@import 'components/recruitment';
+@import 'components/players';

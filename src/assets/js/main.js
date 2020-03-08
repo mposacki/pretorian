@@ -119,6 +119,17 @@ eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPAC
 
 /***/ }),
 
+/***/ "./src/scripts/fb-widget.js":
+/*!**********************************!*\
+  !*** ./src/scripts/fb-widget.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var config = {\n  accessToken: 'EAAKdJVkPDh0BADlgPBS0iDDBUlu4pmQ6ru5ZBCFHigdklGPPKjQPgDpRrWT77Nn944G33nmHAWNwYcY8W3oRpY8ewkjUV7u5UGPT9c89UOeMLZCaQOynDhKBpU9hN3hppvGTOqSc6KtetCXKRMSPy2ct7IMiojrqdcwuZBgggZDZD',\n  appId: 735733686930973,\n  pageId: 101389854814863,\n  userId: 2710807292372504\n};\n\nvar _init = function _init() {\n  FB.init({\n    appId: config.appId,\n    autoLogAppEvents: true,\n    xfbml: true,\n    version: 'v6.0'\n  });\n  FB.AppEvents.logPageView();\n  getNewsFeedData();\n};\n\nvar getNewsFeedData = function getNewsFeedData() {\n  FB.api(\"/\".concat(config.pageId, \"/feed?access_token=\").concat(config.accessToken), 'GET', {\n    \"perms\": [\"manage_pages\", \"pages_show_list\", \"public_profile\"],\n    \"user_id\": config.userId,\n    \"app_id\": config.appId\n  }, function (response) {\n    console.log(response);\n  });\n};\n\nwindow.fbAsyncInit = _init;\n\n//# sourceURL=webpack:///./src/scripts/fb-widget.js?");
+
+/***/ }),
+
 /***/ "./src/scripts/homeSlider.js":
 /*!***********************************!*\
   !*** ./src/scripts/homeSlider.js ***!
@@ -127,7 +138,7 @@ eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPAC
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! slick-carousel */ \"./node_modules/slick-carousel/slick/slick.js\");\n/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_1__);\n\nwindow.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;\nwindow.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;\n\njquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {\n  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.home-slider').slick({\n    slidesToShow: 1,\n    slidesToScroll: 1,\n    lazyLoad: 'progressive',\n    infinite: true,\n    arrows: true,\n    speed: 1000,\n    adaptiveHeight: true,\n    autoplay: true,\n    autoplaySpeed: 5000,\n    nextArrow: '<img class=\"home-slider__arrow home-slider__arrow--next\" src=\"/assets/images/svg/arrow-category.svg\">',\n    prevArrow: '<img class=\"home-slider__arrow home-slider__arrow--prev\" src=\"/assets/images/svg/arrow-category.svg\">',\n    responsive: [{\n      breakpoint: 768,\n      settings: {\n        slidesToShow: 1,\n        slidesToScroll: 1\n      }\n    }]\n  });\n});\n\n//# sourceURL=webpack:///./src/scripts/homeSlider.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! slick-carousel */ \"./node_modules/slick-carousel/slick/slick.js\");\n/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_1__);\n\nwindow.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;\nwindow.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;\n\njquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {\n  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.home-slider').slick({\n    slidesToShow: 1,\n    slidesToScroll: 1,\n    lazyLoad: 'progressive',\n    infinite: true,\n    arrows: true,\n    speed: 1000,\n    autoplay: true,\n    autoplaySpeed: 5000,\n    nextArrow: '<img class=\"home-slider__arrow home-slider__arrow--next\" src=\"/assets/images/svg/arrow-category.svg\">',\n    prevArrow: '<img class=\"home-slider__arrow home-slider__arrow--prev\" src=\"/assets/images/svg/arrow-category.svg\">',\n    responsive: [{\n      breakpoint: 768,\n      settings: {\n        slidesToShow: 1,\n        slidesToScroll: 1\n      }\n    }]\n  });\n}); // import 'glider-js/glider'\n// new Glider(document.querySelector('.home-slider .glider'), {\n//   slidesToShow: 1,\n//   infinite: true,\n//   arrows: {\n//     next: '.home-slider__arrow.home-slider__arrow--next',\n//     prev: '.home-slider__arrow.home-slider__arrow--prev'\n//   }\n// })\n// document.querySelector('.home-slider').addEventListener('glider-slide-visible', function (event) {\n//   var imgs_to_anticipate = 3;\n//   var glider = Glider(this);\n//   for (var i = 0; i <= imgs_to_anticipate; ++i) {\n//     var index = Math.min(event.detail.slide + i, glider.slides.length - 1),\n//       glider = glider;\n//     loadImages.call(glider.slides[index], function () {\n//       glider.refresh(true);\n//     })\n//   }\n// });\n// function loadImages(callback) {\n//   [].forEach.call(this.querySelectorAll('img'), function (img) {\n//     var _img = new Image,\n//       _src = img.getAttribute('data-src');\n//     _img.onload = function () {\n//       img.src = _src;\n//       img.classList.add('loaded');\n//       callback && callback(img);\n//     }\n//     if (img.src !== _src) _img.src = _src;\n//   });\n// }\n\n//# sourceURL=webpack:///./src/scripts/homeSlider.js?");
 
 /***/ }),
 
@@ -139,7 +150,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _homeSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./homeSlider */ \"./src/scripts/homeSlider.js\");\n/* harmony import */ var _teamSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./teamSlider */ \"./src/scripts/teamSlider.js\");\n/* harmony import */ var _navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navigation */ \"./src/scripts/navigation.js\");\n\n\n\n\n_navigation__WEBPACK_IMPORTED_MODULE_2__[\"default\"]._init();\n\n//# sourceURL=webpack:///./src/scripts/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _homeSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./homeSlider */ \"./src/scripts/homeSlider.js\");\n/* harmony import */ var _playersSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./playersSlider */ \"./src/scripts/playersSlider.js\");\n/* harmony import */ var _fb_widget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fb-widget */ \"./src/scripts/fb-widget.js\");\n/* harmony import */ var _fb_widget__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fb_widget__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _navigation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./navigation */ \"./src/scripts/navigation.js\");\n\n\n\n\n\n_navigation__WEBPACK_IMPORTED_MODULE_3__[\"default\"]._init();\n\n//# sourceURL=webpack:///./src/scripts/main.js?");
 
 /***/ }),
 
@@ -155,15 +166,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var medi
 
 /***/ }),
 
-/***/ "./src/scripts/teamSlider.js":
-/*!***********************************!*\
-  !*** ./src/scripts/teamSlider.js ***!
-  \***********************************/
+/***/ "./src/scripts/playersSlider.js":
+/*!**************************************!*\
+  !*** ./src/scripts/playersSlider.js ***!
+  \**************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! slick-carousel */ \"./node_modules/slick-carousel/slick/slick.js\");\n/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_1__);\n\nwindow.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;\nwindow.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;\n\njquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {\n  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.team-slider').slick({\n    slidesToShow: 1,\n    slidesToScroll: 1,\n    lazyLoad: 'progressive',\n    infinite: true,\n    speed: 1000,\n    adaptiveHeight: true,\n    autoplay: true,\n    autoplaySpeed: 40000\n  });\n});\n\n//# sourceURL=webpack:///./src/scripts/teamSlider.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! slick-carousel */ \"./node_modules/slick-carousel/slick/slick.js\");\n/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_1__);\n\nwindow.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;\nwindow.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;\n\njquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {\n  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.players-slider').slick({\n    slidesToShow: 4,\n    slidesToScroll: 4,\n    lazyLoad: 'progressive',\n    infinite: true,\n    dots: true,\n    arrows: false,\n    speed: 1000,\n    autoplay: true,\n    autoplaySpeed: 40000,\n    responsive: [{\n      breakpoint: 1200,\n      settings: {\n        slidesToShow: 3,\n        slidesToScroll: 3\n      }\n    }, {\n      breakpoint: 992,\n      settings: {\n        slidesToShow: 2,\n        slidesToScroll: 2\n      }\n    }, {\n      breakpoint: 576,\n      settings: {\n        slidesToShow: 1,\n        slidesToScroll: 1\n      }\n    }]\n  });\n});\n\n//# sourceURL=webpack:///./src/scripts/playersSlider.js?");
 
 /***/ }),
 

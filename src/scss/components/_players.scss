@@ -1,0 +1,42 @@
+$indent: 1.5rem;
+$playerWidth: calc(25% - #{$indent});
+
+.players {
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  &:before {
+    @include before-background();
+  }
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    margin: 0 auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    width: calc(200px + 2rem);
+
+    background-color: map-get($colors, green-light--bg);
+    box-shadow: 0px 4px 25px -4px rgba(map-get($colors, black), .75);
+  }
+
+  &__image {
+    max-width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 1rem auto 0;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}

@@ -81,3 +81,27 @@
     outline: none;
   }
 }
+
+@mixin before-background() {
+  display: block;
+  position: absolute;
+  top: -49px;
+  left: 0;
+  right: 0;
+  content: '';
+  height: 49px;
+  width: 100%;
+  background: url('../images/background-before.png') top center / cover no-repeat;
+}
+
+@mixin after-background() {
+  display: block;
+  position: absolute;
+  bottom: -49px;
+  left: 0;
+  right: 0;
+  content: '';
+  height: 49px;
+  width: 100%;
+  background: url('../images/background-after.png') top center / cover no-repeat;
+}

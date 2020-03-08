@@ -13,6 +13,8 @@
     "babel-loader": "^8.0.4",
     "babel-preset-latest": "^6.24.1",
     "browser-sync": "^2.26.3",
+    "glider": "^0.1.0",
+    "glider-js": "^1.7.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
