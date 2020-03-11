@@ -1,0 +1,111 @@
+.contact {
+  position: relative;
+  background-color: map-get($colors, black-light);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  &__content {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
+    @include breakpoint(sm) {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__heading-box {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    text-align: center;
+  }
+
+  &__logo {
+    display: block;
+    margin: 0 auto 1rem;
+  }
+
+  &__link {
+    display: block;
+    text-align: center;
+
+    margin-bottom: 1rem;
+
+    font-size: 1.3125rem;
+    line-height: 1.35;
+    font-family: $ibmplexsans;
+    color: map-get($colors, light);
+    transition: color .3s ease-in-out;
+
+    &:hover {
+      color: map-get($colors, green-light--active);
+
+      .contact__link-icon path {
+        fill: map-get($colors, green-light--active);
+      }
+    }
+
+    &:active,
+    &:focus {
+      color: map-get($colors, green-light-2);
+      outline: none;
+      text-decoration: none;
+    }
+
+    &--inline {
+      display: inline;
+    }
+  }
+
+  &__link-icon {
+    width: 13px;
+    height: 13px;
+
+    margin-bottom: 2px;
+
+    path {
+      fill: map-get($colors, light);
+      transition: fill .3s ease-in-out;
+    }
+
+    &--fb {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__info-box {
+
+    @include breakpoint(sm) {
+      flex: 1 0 50%;
+      max-width: 50%;
+
+    }
+  }
+
+  &__form-box {
+    margin-bottom: 2rem;
+    max-width: 100%;
+
+    @include breakpoint(sm) {
+      flex: 1 0 50%;
+      max-width: 50%;
+
+      margin-bottom: 0;
+    }
+  }
+}
+
+.news {
+  height: 1px;
+
+  &:after {
+    @include after-background();
+  }
+}

@@ -41,4 +41,43 @@
       font-size: 2.25rem;
     }
   }
+
+  &--light {
+    color: map-get($colors, light);
+
+    &:before {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      height: 150%;
+      width: 40px;
+      background: url('../images/logo/logo-white@bg.png') center center / cover no-repeat;
+      z-index: -1;
+      transform: translate(-75%, -25%);
+    }
+
+    &:after {
+      display: block;
+      content: '';
+      height: 3rem;
+      width: 1px;
+    }
+  }
+}
+
+.link {
+  color: map-get($colors, green-light--link);
+
+  &:hover {
+    color: map-get($colors, green-light--active);
+  }
+
+  &:active,
+  &:focus {
+    color: map-get($colors, green-light-2);
+    outline: none;
+    text-decoration: none;
+  }
 }

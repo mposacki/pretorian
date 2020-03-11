@@ -6,8 +6,10 @@ $playerWidth: calc(25% - #{$indent});
   padding-top: 5rem;
   padding-bottom: 5rem;
 
-  &:before {
-    @include before-background();
+  @include breakpoint(md) {
+    &:before {
+      @include before-background();
+    }
   }
 }
 
@@ -38,5 +40,6 @@ $playerWidth: calc(25% - #{$indent});
   &__name {
     font-size: 1.5rem;
     line-height: 1.5;
+    padding-bottom: 1rem;
   }
 }

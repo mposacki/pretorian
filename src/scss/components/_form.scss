@@ -1,0 +1,60 @@
+.form {
+  width: 100%;
+  margin: 0 auto;
+
+  @include breakpoint(sm) {
+    width: 90%;
+  }
+
+  @include breakpoint(md) {
+    width: 80%;
+  }
+
+  &__control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    &--row {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__label {
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-family: $ibmplexsans;
+    color: map-get($colors, light);
+  }
+
+  &__input {
+    border: 1px solid map-get($colors, light);
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-family: $ibmplexsans;
+    border-radius: 5px;
+  }
+
+  &__textarea {
+    border: 1px solid map-get($colors, light);
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-family: $ibmplexsans;
+    border-radius: 5px;
+  }
+
+  &__checkbox {
+    width: 25px;
+    height: 25px;
+    align-self: center;
+    margin-right: .75rem;
+  }
+
+  &__btn-wrapper {
+    text-align: center;
+
+    @include breakpoint(sm) {
+      text-align: left;
+    }
+  }
+}

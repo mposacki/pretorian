@@ -1,7 +1,7 @@
 .nav {
   width: 100%;
 
-  @include breakpoint(sm) {
+  @include breakpoint(md) {
     width: auto;
   }
 
@@ -15,7 +15,7 @@
     padding-left: 1rem;
     list-style-type: none;
 
-    @include breakpoint(sm) {
+    @include breakpoint(md) {
       flex-direction: row;
 
       align-items: center;
@@ -38,7 +38,7 @@
   &__link {
     color: map-get($colors, black);
 
-    font-size: 1rem;
+    font-size: 1.25rem;
     line-height: 1.2;
     font-weight: 700;
     text-transform: uppercase;
@@ -57,7 +57,7 @@
       outline: 0;
     }
 
-    @include breakpoint(sm) {
+    @include breakpoint(md) {
       color: map-get($colors, light);
     }
   }
