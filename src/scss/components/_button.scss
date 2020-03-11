@@ -1,0 +1,40 @@
+.btn {
+  color: map-get($colors, green);
+  background-color: map-get($colors, light);
+  border: none;
+  border-radius: .75rem;
+  padding: .5rem 1rem;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: map-get($colors, light);
+    background-color: map-get($colors, green);
+
+    .btn__icon path {
+      fill: map-get($colors, light);
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    color: darken(map-get($colors, light), 5%);
+    background-color: darken(map-get($colors, green), 5%);
+  }
+
+  &__text {
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    width: 13px;
+    height: 13px;
+
+    margin-bottom: 2px;
+
+    path {
+      transition: fill .3s ease-in-out;
+    }
+  }
+}

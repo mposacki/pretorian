@@ -1,66 +1,17 @@
 .footer {
-  &__container {
-    @include container();
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-
-    @include breakpoint(md) {
-      flex-direction: row;
-    }
-  }
+  background-color: map-get($colors, green-light-2);
+  padding: 1rem 0;
+  text-align: center;
 
   &__copyright {
-    font-size: .875rem;
-    color: map-get($colors, dark);
+    color: map-get($colors, light);
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-family: $ibmplexsans;
+    margin-bottom: 1rem;
   }
 
-  &__created {
-    font-size: .9375rem;
-    color: map-get($colors, gray);
-  }
+  &__policy {
 
-  &__social {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-
-    @include breakpoint(md) {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  &__link {
-    &:not(:last-child) {
-      margin-right: 2.5rem;
-    }
-  }
-
-  &__icon {
-    width: 25px;
-    height: 25px;
-  }
-
-  &__card {
-
-    &:not(:last-child) {
-      margin-right: .75rem;
-    }
-
-    &--visa {
-      width: 53px;
-      height: 18px;
-    }
-
-    &--mc {
-      width: 50px;
-      height: 40px;
-    }
   }
 }

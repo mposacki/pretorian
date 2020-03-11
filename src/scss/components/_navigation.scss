@@ -1,0 +1,64 @@
+.nav {
+  width: 100%;
+
+  @include breakpoint(md) {
+    width: auto;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding-top: 1rem;
+    padding-left: 1rem;
+    list-style-type: none;
+
+    @include breakpoint(md) {
+      flex-direction: row;
+
+      align-items: center;
+      justify-content: space-between;
+
+      padding-left: 0;
+      padding-top: 0;
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      padding: .5rem 1rem
+    }
+    &:last-child {
+      padding: .5rem 0 .5rem 1rem;
+    }
+  }
+
+  &__link {
+    color: map-get($colors, black);
+
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    transition: color .3s ease-in-out;
+
+    &:hover {
+      color: map-get($colors, green-light--active);
+    }
+
+    &:active,
+    &:focus {
+      color: darken(map-get($colors, green-light--active), 15%);
+      border: none;
+      background-color: transparent;
+      outline: 0;
+    }
+
+    @include breakpoint(md) {
+      color: map-get($colors, light);
+    }
+  }
+}
