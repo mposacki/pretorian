@@ -101,11 +101,3 @@
     }
   }
 }
-
-.news {
-  height: 1px;
-
-  &:after {
-    @include after-background();
-  }
-}

@@ -31,7 +31,8 @@ gulp.task('browser-sync', ['sass'], function () {
   browserSync.init({
     server: {
       baseDir: "./src"
-    }
+    },
+    https: true
   });
 });
 
