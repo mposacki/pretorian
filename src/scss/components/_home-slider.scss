@@ -1,7 +1,13 @@
+.home {
+  position: relative;
+}
+
 .home-slider {
   position: relative;
 
-  &__image {}
+  &__image {
+    max-width: 100%;
+  }
 
   &__arrow {
     position: absolute;
@@ -10,7 +16,7 @@
     width: 20px;
     height: 36px;
 
-    z-index: 50;
+    z-index: 10;
     cursor: pointer;
 
     @include breakpoint(sm) {

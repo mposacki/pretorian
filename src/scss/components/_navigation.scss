@@ -60,5 +60,9 @@
     @include breakpoint(md) {
       color: map-get($colors, light);
     }
+
+    &--active {
+      color: map-get($colors, green-light--active);
+    }
   }
 }

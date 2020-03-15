@@ -2,13 +2,12 @@
 
 const config = {
   accessToken: 'EAAKdJVkPDh0BAIXRa1bWk1yFCJQkz9aigTbtoI3JFfMIxHZArhuPpcvR6HdIRkwVgLZBIQJiHuSBXzWVXDbq5UVhuja1ZCkdZAUFOSRwEIoq2wOlGsFWAqPU6mQmZABaEcXEEOAWY5EwEa6vXVvyJRqTAcpZA458GxpsecnuMZBD55HZAIc8yca7',
-  appId: 735733686930973,
   pageId: 101389854814863,
   userId: 2710807292372504
 };
 
 export class Facebook {
-  getScript() {
+  getScript = () => {
     return new Promise((resolve) => {
       if (window.FB) {
         resolve(window.FB);
@@ -40,7 +39,7 @@ export class Facebook {
     });
   }
 
-  init(params = {}) {
+  init = (params = {}) => {
     return new Promise(async (resolve) => {
       const FB = await this.getScript();
       FB.init(params);
@@ -49,7 +48,7 @@ export class Facebook {
     });
   }
 
-  api(...params) {
+  api = (...params) => {
     return new Promise(async (resolve) => {
       const FB = await this.getScript();
 
@@ -67,7 +66,7 @@ export class Facebook {
     });
   }
 
-  getNameElement() {
+  getNameElement = () => {
     return new Promise(async (resolve) => {
       const profileNameData = await this.api(
         `/${config.userId}/accounts?access_token=${config.accessToken}`,
@@ -84,7 +83,7 @@ export class Facebook {
     });
   };
 
-  getProfileImage() {
+  getProfileImage = () => {
     return new Promise(async (resolve) => {
       const profilImageData = await this.api(
         `/${config.pageId}/picture?&redirect=false`,
@@ -107,40 +106,55 @@ export class Facebook {
     });
   };
 
-  buildSingleFeed(item, index) {
-    console.log(item, index);
-  }
+  getDate = (date) => {
+    let timeArray = date.split('T'),
+        dateFormat = timeArray[0].split('-').reverse().join('.'),
+        timeFormat =  timeArray[1].split('+')[0];
+    return `${dateFormat} ${timeFormat}`;
+  };
 
-  async buildSchema() {
-    const feedArray = await this.getNewsFeedDataInArray(),
-          headingBox = document.createElement('div'),
-          newsFeedBox = document.querySelector('.news-feed')
-          self = this;
-    headingBox.classList.add('post__heading-box');
-
+  buildSingleFeed = async (item, index) => {
+    const headingBox = document.createElement('div'),
+          headingBoxContent = document.createElement('div'),
+          feedTime = document.createElement('p');
     const profileImage = await this.getProfileImage();
     const profileName = await this.getNameElement();
-    headingBox.appendChild(profileImage);
-    headingBox.appendChild(profileName);
 
-    feedArray.map((feed, index) => {
-      self.buildSingleFeed(feed, index);
+    headingBox.classList.add('post__heading-box');
+    headingBoxContent.classList.add('post__heading-box-content');
+    feedTime.textContent = this.getDate(item.created_time);
+
+    headingBox.appendChild(profileImage);
+
+    headingBoxContent.appendChild(profileName);
+    headingBoxContent.appendChild(feedTime);
+    headingBox.appendChild(headingBoxContent);
+
+    return headingBox;
+  }
+
+  buildSchema = async () => {
+    const feedArray = await this.getNewsFeedDataInArray(),
+          newsFeedBox = document.querySelector('.news-feed');
+
+    feedArray.map(async (feed, index) => {
+      let feedElement = await this.buildSingleFeed(feed, index);
+      newsFeedBox.appendChild(feedElement);
     });
-    newsFeedBox.appendChild(headingBox);
 
     return true;
   }
 
-  getNewsFeedDataInArray() {
-    const self = this;
+  getNewsFeedDataInArray = () => {
     let feedArray = [];
+
     return new Promise(async (resolve) => {
-      const newsFeed = await self.getNewsFeedList();
+      const newsFeed = await this.getNewsFeedList();
 
-      let newsFeedArray = await Promise.all(newsFeed.data.map((item, index) => self.getLinkedFeedData(item.id, index)));
+      let newsFeedArray = await Promise.all(newsFeed.data.map((item, index) => this.getLinkedFeedData(item.id, index)));
 
-      newsFeedArray.sort(function (t1, t2) {
-        return t1.id - t2.id;
+      newsFeedArray.sort(function (feed1, feed2) {
+        return feed1.id - feed2.id;
       });
 
       newsFeed.data.map((item, index) => {
@@ -154,7 +168,7 @@ export class Facebook {
     });
   }
 
-  getNewsFeedList() {
+  getNewsFeedList = () => {
     return new Promise(async (resolve) => {
       const newsFeedData = await this.api(
         `/${config.pageId}/feed?access_token=${config.accessToken}`,
@@ -165,7 +179,7 @@ export class Facebook {
     });
   }
 
-  getLinkedFeedData(id, index) {
+  getLinkedFeedData = (id, index) => {
     return new Promise(async (resolve) => {
       const linkedFeedData = await this.api(
         `/${id}?access_token=${config.accessToken}`,

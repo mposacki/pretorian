@@ -46,17 +46,21 @@
     color: map-get($colors, light);
 
     &:before {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: '';
-      height: 150%;
-      width: 40px;
-      background: url('../images/logo/logo-white@bg.png') center center / cover no-repeat;
-      z-index: -1;
-      transform: translate(-75%, -25%);
+      display: none;
     }
+
+    // &:before {
+    //   display: block;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   content: '';
+    //   height: 150%;
+    //   width: 40px;
+    //   background: url('../images/logo/logo-white@bg.png') center center / cover no-repeat;
+    //   z-index: -1;
+    //   transform: translate(-75%, -25%);
+    // }
 
     &:after {
       display: block;

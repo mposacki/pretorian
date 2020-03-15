@@ -1,44 +1,45 @@
 import 'mediaCheck/js/mediaCheck-min';
 
+const objects = {
+  burger: document.querySelector('.header__navi-burger'),
+  navi: document.querySelector('.header__navi'),
+  overlayDiv: document.querySelector('.header__navi-overlay'),
+  closeIcon: document.querySelector('.header__navi-close')
+}
+
 const Navi = {
-  objects: {
-    burger: document.querySelector('.header__navi-burger'),
-    navi: document.querySelector('.header__navi'),
-    overlayDiv: document.querySelector('.header__navi-overlay'),
-    closeIcon: document.querySelector('.header__navi-close')
-  },
-  _init() {
+  _init: () => {
     mediaCheck({
-      media: '(max-width: 768px)',
-        entry: function () {
-          this._bindEvent();
-        }.bind(this),
-        exit: function () {
-          this._unbindEvent();
-        }.bind(this)
+      media: '(max-width: 992px)',
+      entry: function () {
+        Navi._bindEvent();
+      },
+      exit: function () {
+        Navi._unbindEvent();
+      }
     });
   },
-  _burderClickHandler() {
-    this.objects.navi.classList.add('header__navi--active');
-    this.objects.overlayDiv.style.display = 'block';
-    this.objects.overlayDiv.addEventListener('click', this._overlayClickHandler, true);
+  _burderClickHandler: () => {
+    objects.navi.classList.add('header__navi--active');
+    objects.overlayDiv.style.display = 'block';
+    objects.overlayDiv.addEventListener('click', Navi._overlayClickHandler, false);
   },
-  _overlayClickHandler() {
-    this.objects.navi.classList.remove('header__navi--active');
-    this.objects.overlayDiv.style.display = 'none';
+  _closeIconClickHandler: () => {
+    objects.navi.classList.remove('header__navi--active');
+    objects.overlayDiv.style.display = 'none';
+    objects.overlayDiv.removeEventListener('click', Navi._overlayClickHandler);
   },
-  _closeIconClickHandler() {
-    this.objects.navi.classList.remove('header__navi--active');
-    this.objects.overlayDiv.style.display = 'none';
-    this.objects.overlayDiv.removeEventListener('click', this._overlayClickHandler, true);
+  _overlayClickHandler: () => {
+    objects.navi.classList.remove('header__navi--active');
+    objects.overlayDiv.style.display = 'none';
   },
-  _bindEvent() {
-    this.objects.burger.addEventListener('click', this._burderClickHandler, true);
-    this.objects.closeIcon.addEventListener('click', this._closeIconClickHandler, true);
+  _bindEvent: () => {
+    objects.burger.addEventListener('click', Navi._burderClickHandler, false);
+    objects.closeIcon.addEventListener('click', Navi._closeIconClickHandler, false);
   },
-  _unbindEvent() {
-    this.objects.burger.removeEventListener('click', this._burderClickHandler, true);
-    this.objects.closeIcon.removeEventListener('click', this._closeIconClickHandler, true);
+  _unbindEvent: () => {
+    objects.burger.removeEventListener('click', Navi._burderClickHandler);
+    objects.closeIcon.removeEventListener('click', Navi._closeIconClickHandler);
   },
 }
 

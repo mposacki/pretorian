@@ -17,9 +17,6 @@
   <header class="header">
     <div class="container header__container">
       <img src="assets/images/logo/logo-white@x0.5.png" alt="Pretorian logo image" class="header__logo">
-      <a href="/en" class="header__lang-switcher">
-        <img src="assets/images/svg/en.svg" alt="United Kingdom flag icon" class="header__icon">
-      </a>
       <div class="header__navi-burger">
         <span></span>
         <span></span>
@@ -29,7 +26,7 @@
         <nav class="nav" role="navigation">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="/#home" class="nav__link">Home</a>
+              <a href="/#home" class="nav__link nav__link--active">Home</a>
             </li>
             <li class="nav__item">
               <a href="/#about-us" class="nav__link">About Us</a>
@@ -53,6 +50,9 @@
           <span></span>
         </div>
       </div>
+      <a href="/en" class="header__lang-switcher">
+        <img src="assets/images/svg/en.svg" alt="United Kingdom flag icon" class="header__icon">
+      </a>
     </div>
     <div class="header__navi-overlay"></div>
   </header>
@@ -60,16 +60,14 @@
   <main class="main">
     <section class="home" id="home">
       <div class="home-slider">
-        <img src="assets/images/home-slider-1.jpg" data-lazy="assets/images/home-slider-1.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-2.jpg" data-lazy="assets/images/home-slider-2.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-3.jpg" data-lazy="assets/images/home-slider-3.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-4.jpg" data-lazy="assets/images/home-slider-4.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-5.jpg" data-lazy="assets/images/home-slider-5.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-6.jpg" data-lazy="assets/images/home-slider-6.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-7.jpg" data-lazy="assets/images/home-slider-7.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-8.jpg" data-lazy="assets/images/home-slider-8.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-9.jpg" data-lazy="assets/images/home-slider-9.jpg" alt="Paintball photo" class="home-slider__image">
+        <img src="assets/images/home-slider/home-slider-1.jpg" alt="Paintball photo" class="home-slider__image">
+        <img src="assets/images/home-slider/home-slider-2.jpg" alt="Paintball photo" class="home-slider__image">
+        <img src="assets/images/home-slider/home-slider-3.jpg" alt="Paintball photo" class="home-slider__image">
+        <img src="assets/images/home-slider/home-slider-4.jpg" alt="Paintball photo" class="home-slider__image">
+        <img src="assets/images/home-slider/home-slider-5.jpg" alt="Paintball photo" class="home-slider__image">
       </div>
+      <img class="home-slider__arrow home-slider__arrow--next" src="/assets/images/svg/arrow-category.svg">
+      <img class="home-slider__arrow home-slider__arrow--prev" src="/assets/images/svg/arrow-category.svg">
     </section>
     <section class="about-us" id="about-us">
       <div class="container text-center">
@@ -202,7 +200,7 @@
           <div class="contact__info-box">
             <img src="assets/images/logo/logo-white@x2.png" alt="Logo image" class="contact__logo">
             <div class="contact__description">
-              <a href="https://pretorian-forum.pl" target="_blank" class="contact__link">
+              <a href="https://pretorians.pl/phpbb3/index.php" target="_blank" class="contact__link">
                 <span class="contact__link-content">Sprawdź nasze forum</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="contact__link-icon">
                   <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" /></svg>
@@ -216,15 +214,19 @@
           <div class="contact__form-box">
             <form class="form">
               <div class="form__control">
-                <label for="cfname" class="form__label">E-mail</label>
+                <label for="cfname" class="form__label">Imię/Nazwa użytkownika</label>
                 <input class="form__input" type="text" name="cfname" id="cfname">
+              </div>
+              <div class="form__control">
+                <label for="cfmail" class="form__label">E-mail</label>
+                <input class="form__input" type="text" name="cfmail" id="cfmail">
               </div>
               <div class="form__control">
                 <label for="cfcontent" class="form__label">Wiadomość</label>
                 <textarea class="form__textarea" name="cfcontent" id="cfcontent" cols="30" rows="10"></textarea>
               </div>
               <div class="form__control form__control--row">
-                <label for="cfrodo" class="form__label">Zapoznałem się z <a href="/rodo.html" class="link">polityką
+                <label for="cfrodo" class="form__label">Zapoznałem się z <a href="/assets/policy_pl.pdf" class="link"  target="_blank">polityką
                     prywatności</a> i zgadzam się na przetwarzanie moich danych</label>
                 <input class="form__checkbox" type="checkbox" name="cfrodo" id="cfrodo">
               </div>

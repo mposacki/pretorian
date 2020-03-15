@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*!
  * Bootstrap Reboot v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -352,18 +351,7 @@ body {
   .heading--light {
     color: #fff; }
     .heading--light:before {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: '';
-      height: 150%;
-      width: 40px;
-      background: url("../images/logo/logo-white@bg.png") center center/cover no-repeat;
-      z-index: -1;
-      -webkit-transform: translate(-75%, -25%);
-          -ms-transform: translate(-75%, -25%);
-              transform: translate(-75%, -25%); }
+      display: none; }
     .heading--light:after {
       display: block;
       content: '';
@@ -379,160 +367,20 @@ body {
     outline: none;
     text-decoration: none; }
 
-/* Slider */
-.slick-slider {
-  position: relative;
-  display: block;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -ms-touch-action: pan-y;
-  touch-action: pan-y;
-  -webkit-tap-highlight-color: transparent; }
-
-.slick-list {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  margin: 0;
-  padding: 0; }
-  .slick-list:focus {
-    outline: none; }
-  .slick-list.dragging {
-    cursor: pointer;
-    cursor: hand; }
-
-.slick-slider .slick-track,
-.slick-slider .slick-list {
-  -webkit-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
-
-.slick-track {
-  position: relative;
-  left: 0;
-  top: 0;
-  display: block;
-  margin-left: auto;
-  margin-right: auto; }
-  .slick-track:before, .slick-track:after {
-    content: "";
-    display: table; }
-  .slick-track:after {
-    clear: both; }
-  .slick-loading .slick-track {
-    visibility: hidden; }
-
-.slick-slide {
-  float: left;
-  height: 100%;
-  min-height: 1px;
-  display: none; }
-  [dir="rtl"] .slick-slide {
-    float: right; }
-  .slick-slide img {
-    display: block; }
-  .slick-slide.slick-loading img {
-    display: none; }
-  .slick-slide.dragging img {
-    pointer-events: none; }
-  .slick-initialized .slick-slide {
-    display: block; }
-  .slick-loading .slick-slide {
-    visibility: hidden; }
-  .slick-vertical .slick-slide {
-    display: block;
-    height: auto;
-    border: 1px solid transparent; }
-
-.slick-arrow.slick-hidden {
-  display: none; }
-
-@font-face {
-  font-family: "slick";
-  src: slick-font-url("../../node_modules/slick-carousel/slick/fonts/slick.eot");
-  src: slick-font-url("../../node_modules/slick-carousel/slick/fonts/slick.eot?#iefix") format("embedded-opentype"), slick-font-url("../../node_modules/slick-carousel/slick/fonts/slick.woff") format("woff"), slick-font-url("../../node_modules/slick-carousel/slick/fonts/slick.ttf") format("truetype"), slick-font-url("../../node_modules/slick-carousel/slick/fonts/slick.svg#slick") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-.slick-loading .slick-list {
-  background: #fff "../../node_modules/slick-carousel/slick/fonts/ajax-loader.gif" center center no-repeat; }
-
-.slick-slide {
-  margin: 0 2rem 2rem; }
-
-.slick-list {
-  margin: 0 -2rem; }
-
-/* Dots */
-.slick-dotted.slick-slider {
-  margin-bottom: 30px; }
-
-.slick-dots {
-  position: absolute;
-  bottom: -25px;
-  list-style: none;
-  display: block;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  width: 100%; }
-  .slick-dots li {
-    position: relative;
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    margin: 0 5px;
-    padding: 0;
-    cursor: pointer; }
-    .slick-dots li button {
-      border: 0;
-      background: transparent;
-      display: block;
-      height: 20px;
-      width: 20px;
-      outline: none;
-      line-height: 0px;
-      font-size: 0px;
-      color: transparent;
-      padding: 5px;
-      cursor: pointer; }
-      .slick-dots li button:hover, .slick-dots li button:focus {
-        outline: none; }
-        .slick-dots li button:hover:before, .slick-dots li button:focus:before {
-          opacity: 1; }
-      .slick-dots li button:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: "•";
-        width: 20px;
-        height: 20px;
-        font-family: "slick";
-        font-size: 50px;
-        line-height: 20px;
-        text-align: center;
-        color: #1d1d1b;
-        opacity: 0.25;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale; }
-    .slick-dots li.slick-active button:before {
-      color: #609b79;
-      opacity: 0.75; }
-
 .header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   padding: 1rem;
-  height: 9.375rem;
   background-color: transparent;
   z-index: 20; }
+  @media (min-width: 768px) {
+    .header {
+      height: 9.375rem; } }
+  .header--fixed {
+    position: fixed;
+    background-color: rgba(29, 29, 27, 0.9); }
   .header__container {
     display: -webkit-box;
     display: -webkit-flex;
@@ -668,7 +516,8 @@ body {
         display: none; } }
   .header__lang-switcher {
     font-size: 0;
-    line-height: 1; }
+    line-height: 1;
+    margin-left: 1rem; }
 
 .footer {
   background-color: #1c3b29;
@@ -763,15 +612,22 @@ body {
     @media (min-width: 992px) {
       .nav__link {
         color: #fff; } }
+    .nav__link--active {
+      color: #609b79; }
+
+.home {
+  position: relative; }
 
 .home-slider {
   position: relative; }
+  .home-slider__image {
+    max-width: 100%; }
   .home-slider__arrow {
     position: absolute;
     top: 50%;
     width: 20px;
     height: 36px;
-    z-index: 50;
+    z-index: 10;
     cursor: pointer; }
     @media (min-width: 768px) {
       .home-slider__arrow {
@@ -945,6 +801,20 @@ body {
       height: 49px;
       width: 100%;
       background: url("../images/background-before.png") top center/cover no-repeat; } }
+
+.players-slider {
+  padding-top: 1rem;
+  padding-bottom: 1.5rem; }
+  .players-slider-dots__item {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #dfdfdf;
+    margin-right: .5rem;
+    border: 0;
+    cursor: pointer; }
+    .players-slider-dots__item--active {
+      background-color: #609b79; }
 
 .player {
   display: -webkit-box;
