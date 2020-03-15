@@ -1,6 +1,8 @@
+import "@babel/polyfill";
+
 import './homeSlider';
 import './playersSlider';
-import './fb-widget';
+import './runFacebook';
 import Navi from './navigation';
 
 Navi._init();
