@@ -17,18 +17,40 @@ $playerWidth: calc(25% - #{$indent});
   padding-top: 1rem;
   padding-bottom: 1.5rem;
 
-  &-dots {
-    &__item {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: map-get($colors, gray);
-      margin-right: .5rem;
-      border: 0;
-      cursor: pointer;
-      
-      &--active {
-        background-color: map-get($colors, green-light--active);
+  &__content-box {
+    position: relative;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+
+    width: 20px;
+    height: 36px;
+
+    z-index: 10;
+    cursor: pointer;
+
+    @include breakpoint(sm) {
+      width: 30px;
+      height: 54px;
+    }
+
+    &--next {
+      right: 0;
+      transform: translateY(-50%);
+
+      @include breakpoint(xs) {
+        right: -2rem;
+      }
+    }
+
+    &--prev {
+      left: 0;
+      transform: translateY(-50%) rotate(180deg);
+
+      @include breakpoint(xs) {
+        left: -2rem;
       }
     }
   }

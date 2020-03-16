@@ -2,27 +2,7 @@
   position: relative;
   z-index: 10;
   text-transform: uppercase;
-  display: inline;
-
-  &:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    height: 150%;
-    width: 40px;
-    background: url('../images/logo/logo-dark@bg.png') center center / cover no-repeat;
-    z-index: -1;
-    transform: translate(-25%, -25%);
-  }
-
-  &:after {
-    display: block;
-    content: '';
-    height: 3rem;
-    width: 1px;
-  }
+  margin-bottom: 3rem;
 
   &--h2 {
     font-size: 2rem;
@@ -44,30 +24,6 @@
 
   &--light {
     color: map-get($colors, light);
-
-    &:before {
-      display: none;
-    }
-
-    // &:before {
-    //   display: block;
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   content: '';
-    //   height: 150%;
-    //   width: 40px;
-    //   background: url('../images/logo/logo-white@bg.png') center center / cover no-repeat;
-    //   z-index: -1;
-    //   transform: translate(-75%, -25%);
-    // }
-
-    &:after {
-      display: block;
-      content: '';
-      height: 3rem;
-      width: 1px;
-    }
   }
 }
 

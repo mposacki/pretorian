@@ -76,7 +76,7 @@ export class Facebook {
       const account = profileNameData.data[0],
             name = document.createElement('p');
 
-      name.classList.add('post__heading');
+      name.classList.add('feed__heading');
       name.textContent = account.name;
 
       resolve(name);
@@ -97,7 +97,7 @@ export class Facebook {
           url
         } = profilImageData.data;
 
-      image.classList.add('post__image');
+      image.classList.add('feed__image');
       image.setAttribute('width', width);
       image.setAttribute('height', height);
       image.setAttribute('src', url);
@@ -107,43 +107,141 @@ export class Facebook {
   };
 
   getDate = (date) => {
-    let timeArray = date.split('T'),
+    if (date !== '') {
+      let timeArray = date.split('T'),
         dateFormat = timeArray[0].split('-').reverse().join('.'),
-        timeFormat =  timeArray[1].split('+')[0];
-    return `${dateFormat} ${timeFormat}`;
+        timeFormat = timeArray[1].split('+')[0];
+      return `${dateFormat} ${timeFormat}`;
+    } else {
+      return '';
+    }
   };
 
-  buildSingleFeed = async (item, index) => {
+  //Content of feed (post and shared post)
+  getPost = (item) => {
+    const feedMessage = document.createElement('p');
+    feedMessage.classList.add('feed__message');
+    feedMessage.textContent = item.message;
+
+    return feedMessage;
+  };
+
+  getPostShared = async (item) => {
+    const parentPostData = await this.api(
+      `/${item.parent_id}?access_token=${config.accessToken}`,
+      'GET', {
+        "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
+      });
+
+      const postSharedContent = document.createElement('div'),
+            postSharedContentMessage = document.createElement('p'),
+            headingBox = await this.buildHeadingBox(item);
+
+      postSharedContent.classList.add('feed__content');
+      postSharedContentMessage.classList.add('feed__content-message');
+      postSharedContentMessage.textContent = parentPostData.message;
+
+      postSharedContent.appendChild(headingBox);
+      postSharedContent.appendChild(postSharedContentMessage);
+
+      return postSharedContent;
+  };
+
+  //Content of feed (post and shared post)
+
+  buildHeadingBox = async (item) => {
     const headingBox = document.createElement('div'),
-          headingBoxContent = document.createElement('div'),
-          feedTime = document.createElement('p');
+          feedTime = document.createElement('p'),
+          headingBoxContent = document.createElement('div');
     const profileImage = await this.getProfileImage();
     const profileName = await this.getNameElement();
 
-    headingBox.classList.add('post__heading-box');
-    headingBoxContent.classList.add('post__heading-box-content');
-    feedTime.textContent = this.getDate(item.created_time);
+    if (item.story && (item.story.indexOf('zaktualizował(a)') !== -1 || item.story.indexOf('dodał(a)') !== -1)) {
+      profileName.textContent = item.story;
+    }
+
+    if (item.hasOwnProperty('created_time')) {
+      feedTime.textContent = this.getDate(item.created_time);
+    } else {
+      feedTime.textContent = '';
+    }
+
+    feedTime.classList.add('feed__time');
+    headingBox.classList.add('feed__heading-box');
+    headingBoxContent.classList.add('feed__heading-box-content');
 
     headingBox.appendChild(profileImage);
-
     headingBoxContent.appendChild(profileName);
     headingBoxContent.appendChild(feedTime);
+
     headingBox.appendChild(headingBoxContent);
 
     return headingBox;
-  }
+  };
+
+  checkFeedContentType = async (item) => {
+    if (!item.hasOwnProperty('attachments') && item.parent_id) {
+      return await this.getPostShared(item);
+    }
+
+    // switch (item.attachments.data[0].type) {
+    //   case 'album':
+    //     return item.parent_id ? await getAlbumShared(item) : getAlbum(item);
+    //     break;
+    //   case 'event':
+    //     return item.message ? await getEventShared(item) : getEvent(item);
+    //     break;
+    //   case 'photo':
+    //     return item.parent_id ? await getPhotoShared(item) : getPhoto(item);
+    //     break;
+    //   case 'cover_photo':
+    //     return item.parent_id ? await getCoverPhotoShared(item) : getCoverPhoto(item);
+    //     break;
+    //   case 'profile_media':
+    //     return item.parent_id ? await getProfileMediaShared(item) : getProfileMedia(item);
+    //     break;
+    //   case 'video_autoplay':
+    //     return item.parent_id ? await getVideoShared(item) : getVideo(item);
+    //     break;
+    // }
+
+    return false;
+  };
+
+  buildSingleFeed = async (item) => {
+    const feedWrapper = document.createElement('div'),
+          headingBox = await this.buildHeadingBox(item),
+          feedContent = await this.checkFeedContentType(item.linkedFeedData);
+    feedWrapper.classList.add('feed');
+    feedWrapper.appendChild(headingBox);
+
+    if (item.message) {
+      const feedMessage = document.createElement('p');
+      feedMessage.classList.add('feed__message');
+      feedMessage.textContent = item.message;
+      feedWrapper.appendChild(feedMessage);
+    }
+    
+    if(feedContent !== false) {
+      feedWrapper.appendChild(feedContent);
+    }
+
+    return feedWrapper;
+  };
 
   buildSchema = async () => {
     const feedArray = await this.getNewsFeedDataInArray(),
           newsFeedBox = document.querySelector('.news-feed');
-
+    console.log(feedArray);
     feedArray.map(async (feed, index) => {
-      let feedElement = await this.buildSingleFeed(feed, index);
-      newsFeedBox.appendChild(feedElement);
+      if (feed.linkedFeedData.is_published) {
+        let feedElement = await this.buildSingleFeed(feed, index);
+        newsFeedBox.appendChild(feedElement);
+      }
     });
 
     return true;
-  }
+  };
 
   getNewsFeedDataInArray = () => {
     let feedArray = [];
@@ -166,7 +264,7 @@ export class Facebook {
 
       resolve(feedArray);
     });
-  }
+  };
 
   getNewsFeedList = () => {
     return new Promise(async (resolve) => {
@@ -177,7 +275,7 @@ export class Facebook {
 
       resolve(newsFeedData);
     });
-  }
+  };
 
   getLinkedFeedData = (id, index) => {
     return new Promise(async (resolve) => {
@@ -192,5 +290,5 @@ export class Facebook {
         id: index
       });
     });
-  }
+  };
 }

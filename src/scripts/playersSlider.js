@@ -1,35 +1,6 @@
 import Siema from 'siema';
 
-class SiemaWithDots extends Siema {
-
-  addDots() {
-    this.dots = document.createElement('div');
-    this.dots.classList.add('players-slider-dots');
-
-    for (let i = 0; i < this.innerElements.length; i++) {
-      const dot = document.createElement('button');
-
-      dot.classList.add('players-slider-dots__item');
-
-      dot.addEventListener('click', () => {
-        this.goTo(i);
-      })
-
-      this.dots.appendChild(dot);
-    }
-
-    this.selector.parentNode.insertBefore(this.dots, this.selector.nextSibling);
-  }
-
-  updateDots() {
-    for (let i = 0; i < this.dots.querySelectorAll('button').length; i++) {
-      const addOrRemove = this.currentSlide === i ? 'add' : 'remove';
-      this.dots.querySelectorAll('button')[i].classList[addOrRemove]('players-slider-dots__item--active');
-    }
-  }
-}
-
-const playersSlider = new SiemaWithDots({
+const playersSlider = new Siema({
   selector: '.players-slider',
   duration: 1000,
   easing: 'ease-out',
@@ -45,15 +16,29 @@ const playersSlider = new SiemaWithDots({
   threshold: 20,
   loop: true,
   rtl: false,
-
-  onInit: function () {
-    this.addDots();
-    this.updateDots();
-  },
-
-  onChange: function () {
-    this.updateDots()
-  },
+  onInit: () => {},
+  onChange: () => {},
 });
+
+document.querySelector('.players-slider__arrow--prev').addEventListener('click', () => {
+  const valueOfScroll = getValueOfElementToScroll(window.innerWidth);
+  playersSlider.prev(valueOfScroll);
+});
+document.querySelector('.players-slider__arrow--next').addEventListener('click', () => {
+  const valueOfScroll = getValueOfElementToScroll(window.innerWidth);
+  playersSlider.next(valueOfScroll);
+});
+
+const changeSlide = (side) => {
+  const valueOfScroll = getValueOfElementToScroll(window.innerWidth);
+  playersSlider.side(valueOfScroll);
+};
+
+const getValueOfElementToScroll = (value) => {
+  if (value > 0 && value < 576) return 1;
+  if (value >= 576 && value < 992) return 2;
+  if (value > 992 && value < 1200) return 3;
+  if (value > 1200) return 4;
+};
 
 export default playersSlider;

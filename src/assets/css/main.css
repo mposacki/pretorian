@@ -317,25 +317,7 @@ body {
   position: relative;
   z-index: 10;
   text-transform: uppercase;
-  display: inline; }
-  .heading:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    height: 150%;
-    width: 40px;
-    background: url("../images/logo/logo-dark@bg.png") center center/cover no-repeat;
-    z-index: -1;
-    -webkit-transform: translate(-25%, -25%);
-        -ms-transform: translate(-25%, -25%);
-            transform: translate(-25%, -25%); }
-  .heading:after {
-    display: block;
-    content: '';
-    height: 3rem;
-    width: 1px; }
+  margin-bottom: 3rem; }
   .heading--h2 {
     font-size: 2rem;
     line-height: 1.2; }
@@ -350,13 +332,6 @@ body {
         font-size: 2.25rem; } }
   .heading--light {
     color: #fff; }
-    .heading--light:before {
-      display: none; }
-    .heading--light:after {
-      display: block;
-      content: '';
-      height: 3rem;
-      width: 1px; }
 
 .link {
   color: #68b98a; }
@@ -805,16 +780,35 @@ body {
 .players-slider {
   padding-top: 1rem;
   padding-bottom: 1.5rem; }
-  .players-slider-dots__item {
+  .players-slider__content-box {
+    position: relative; }
+  .players-slider__arrow {
+    position: absolute;
+    top: 50%;
     width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #dfdfdf;
-    margin-right: .5rem;
-    border: 0;
+    height: 36px;
+    z-index: 10;
     cursor: pointer; }
-    .players-slider-dots__item--active {
-      background-color: #609b79; }
+    @media (min-width: 768px) {
+      .players-slider__arrow {
+        width: 30px;
+        height: 54px; } }
+    .players-slider__arrow--next {
+      right: 0;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%); }
+      @media (min-width: 576px) {
+        .players-slider__arrow--next {
+          right: -2rem; } }
+    .players-slider__arrow--prev {
+      left: 0;
+      -webkit-transform: translateY(-50%) rotate(180deg);
+          -ms-transform: translateY(-50%) rotate(180deg);
+              transform: translateY(-50%) rotate(180deg); }
+      @media (min-width: 576px) {
+        .players-slider__arrow--prev {
+          left: -2rem; } }
 
 .player {
   display: -webkit-box;
