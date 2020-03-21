@@ -133,21 +133,161 @@ export class Facebook {
         "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
       });
 
-      const postSharedContent = document.createElement('div'),
-            postSharedContentMessage = document.createElement('p'),
-            headingBox = await this.buildHeadingBox(item);
+      if (!parentPostData.hasOwnProperty('error')) {
+        const postSharedContent = document.createElement('div'),
+          postSharedContentMessage = document.createElement('p'),
+          headingBox = await this.buildHeadingBox(item);
 
-      postSharedContent.classList.add('feed__content');
-      postSharedContentMessage.classList.add('feed__content-message');
-      postSharedContentMessage.textContent = parentPostData.message;
+        postSharedContent.classList.add('feed__content');
+        postSharedContentMessage.classList.add('feed__content-message');
+        postSharedContentMessage.textContent = parentPostData.message;
 
-      postSharedContent.appendChild(headingBox);
-      postSharedContent.appendChild(postSharedContentMessage);
+        postSharedContent.appendChild(headingBox);
+        postSharedContent.appendChild(postSharedContentMessage);
 
-      return postSharedContent;
+        return postSharedContent;
+      } else {
+        return false;
+      }
   };
 
-  //Content of feed (post and shared post)
+  //Content of feed (album and shared album)
+  getAlbum = (item) => {
+    const feedImageBox = document.createElement('div'),
+          feedMainImage = document.createElement('img'),
+          imageNumber = document.createElement('span'),
+          albumLength = item.attachments.data[0].subattachments.data.length;
+
+    feedImageBox.classList.add('feed__image-box');
+
+    feedMainImage.classList.add('feed__image');
+    feedMainImage.setAttribute('src', item.attachments.data[0].subattachments.data[0].media.image.src);
+    feedImageBox.appendChild(feedMainImage);
+
+    imageNumber.classList.add('feed__counter');
+    imageNumber.textContent = `+${albumLength - 1}`;
+    feedImageBox.appendChild(imageNumber);
+
+    return feedImageBox;
+  }
+
+  getAlbumShared = async (item) => {
+    const parentPostData = await this.api(
+      `/${item.parent_id}?access_token=${config.accessToken}`,
+      'GET', {
+        "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
+      });
+
+    const feedContent = document.createElement('div'),
+          album = this.getAlbum(parentPostData),
+          headingBox = await this.buildHeadingBox(item),
+          parentMessage = document.createElement('p');
+
+    feedContent.classList.add('feed__content');
+    feedContent.appendChild(album);
+    feedContent.appendChild(headingBox);
+
+    parentMessage.classList.add('feed__content-message');
+    if(parentPostData.hasOwnProperty('error')) {
+      parentMessage.textContent = item.attachments.data[0].title;
+    } else {
+      parentMessage.textContent = parentPostData.message;
+    }
+    feedContent.appendChild(parentMessage);
+
+    return feedContent;
+  }
+
+  //Content of feed (event and shared event)
+  getEvent = (item) => {
+    const feedContent = document.createElement('div'),
+          feedMainImage = document.createElement('img'),
+          eventName = document.createElement('p');
+
+    feedContent.classList.add('feed__content');
+
+    feedMainImage.classList.add('feed__image');
+    feedMainImage.setAttribute('src', item.attachments.data[0].media.image.src);
+    feedContent.appendChild(feedMainImage);
+
+    eventName.classList.add('feed__event-name');
+    eventName.textContent = item.attachments.data[0].title;
+    feedContent.appendChild(eventName);
+
+    return feedContent;
+  }
+
+  //Content of feed (photo and shared photo)
+  getPhoto = (item) => {
+    const image = document.createElement('img');
+
+    image.classList.add('feed__image');
+    image.setAttribute('src', item.attachments.data[0].media.image.src);
+
+    return image;
+  }
+
+  //Content of feed (cover photo and shared cover photo)
+  getCoverPhotoShared = (item) => {
+    const image = this.getPhoto(item),
+          feedContent = document.createElement('div'),
+          description = document.createElement('p');
+
+    feedContent.classList.add('feed__content');
+    description.classList.add('feed__content-message');
+    description.textContent = item.attachments.data[0].title;
+    feedContent.appendChild(image);
+    feedContent.appendChild(description);
+
+    return feedContent;
+  }
+
+  //Content of feed (profile media and shared profile media)
+  getProfileMedia = (item) => {
+    const image = document.createElement('img');
+
+    image.classList.add('feed__image');
+    image.classList.add('feed__image--profile');
+    image.setAttribute('src', item.attachments.data[0].media.image.src);
+
+    return image;
+  }
+
+  //Content of feed (profile media and shared profile media)
+  getVideo = (item) => {
+    const video = document.createElement('video');
+
+    video.classList.add('feed__video');
+    video.setAttribute('src', item.attachments.data[0].media.source);
+    video.setAttribute('controls', "controls");
+
+    return video;
+  }
+
+  getVideoShared = async (item) => {
+    const parentPostData = await this.api(
+      `/${item.parent_id}?access_token=${config.accessToken}`,
+      'GET', {
+        "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
+      });
+
+    if(!parentPostData.hasOwnProperty('error')) {
+      const feedContent = document.createElement('div'),
+        video = this.getVideo(item),
+        parentMessage = document.createElement('p');
+
+      feedContent.classList.add('feed__content');
+      feedContent.appendChild(video);
+
+      parentMessage.classList.add('feed__content-message');
+      parentMessage.textContent = parentPostData.message;
+      feedContent.appendChild(parentMessage);
+
+      return feedContent;
+    } else {
+      return false;
+    }
+  }
 
   buildHeadingBox = async (item) => {
     const headingBox = document.createElement('div'),
@@ -156,7 +296,7 @@ export class Facebook {
     const profileImage = await this.getProfileImage();
     const profileName = await this.getNameElement();
 
-    if (item.story && (item.story.indexOf('zaktualizował(a)') !== -1 || item.story.indexOf('dodał(a)') !== -1)) {
+    if (item.story) {
       profileName.textContent = item.story;
     }
 
@@ -180,32 +320,34 @@ export class Facebook {
   };
 
   checkFeedContentType = async (item) => {
-    if (!item.hasOwnProperty('attachments') && item.parent_id) {
-      return await this.getPostShared(item);
+    if (!item.hasOwnProperty('attachments')) {
+      return item.parent_id ? await this.getPostShared(item) : false;
     }
 
-    // switch (item.attachments.data[0].type) {
-    //   case 'album':
-    //     return item.parent_id ? await getAlbumShared(item) : getAlbum(item);
-    //     break;
-    //   case 'event':
-    //     return item.message ? await getEventShared(item) : getEvent(item);
-    //     break;
-    //   case 'photo':
-    //     return item.parent_id ? await getPhotoShared(item) : getPhoto(item);
-    //     break;
-    //   case 'cover_photo':
-    //     return item.parent_id ? await getCoverPhotoShared(item) : getCoverPhoto(item);
-    //     break;
-    //   case 'profile_media':
-    //     return item.parent_id ? await getProfileMediaShared(item) : getProfileMedia(item);
-    //     break;
-    //   case 'video_autoplay':
-    //     return item.parent_id ? await getVideoShared(item) : getVideo(item);
-    //     break;
-    // }
-
-    return false;
+    switch (item.attachments.data[0].type) {
+      case 'album':
+        return item.hasOwnProperty('parent_id') ? await this.getAlbumShared(item) : this.getAlbum(item);
+        break;
+      case 'event':
+        return this.getEvent(item);
+        break;
+      case 'photo':
+        return this.getPhoto(item);
+        break;
+      case 'cover_photo':
+        return item.hasOwnProperty('parent_id') ? this.getCoverPhotoShared(item) : this.getPhoto(item);
+        break;
+      case 'profile_media':
+        return this.getProfileMedia(item);
+        break;
+      case 'video_autoplay':
+        return item.hasOwnProperty('parent_id') ? await this.getVideoShared(item) : this.getVideo(item);
+        break;
+      default:
+        console.log(item);
+        return false;
+        break;
+    }
   };
 
   buildSingleFeed = async (item) => {
@@ -221,7 +363,7 @@ export class Facebook {
       feedMessage.textContent = item.message;
       feedWrapper.appendChild(feedMessage);
     }
-    
+
     if(feedContent !== false) {
       feedWrapper.appendChild(feedContent);
     }

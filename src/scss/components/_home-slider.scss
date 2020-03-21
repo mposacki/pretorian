@@ -1,15 +1,39 @@
 .home {
   position: relative;
+  padding-top: 110px;
+
+  @include breakpoint(sm) {
+    padding-top: 0;
+  }
 }
 
 .home-slider {
   position: relative;
+  display: none;
+
+  @include breakpoint(sm) {
+    display: block;
+    padding-top: 110px;
+  }
+
+  @include breakpoint(md) {
+    padding-top: 0;
+  }
 
   &__image {
     max-width: 100%;
+
+    &--mobile {
+      display: block;
+
+      @include breakpoint(sm) {
+        display: none;
+      }
+    }
   }
 
   &__arrow {
+    display: none;
     position: absolute;
     top: 50%;
 
@@ -20,6 +44,8 @@
     cursor: pointer;
 
     @include breakpoint(sm) {
+      display: block;
+
       width: 30px;
       height: 54px;
     }

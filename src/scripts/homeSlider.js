@@ -1,4 +1,5 @@
 import Siema from 'siema';
+import 'mediaCheck/js/mediaCheck-min';
 
 const homeSlider = new Siema({
   selector: '.home-slider',
@@ -15,9 +16,25 @@ const homeSlider = new Siema({
   onChange: () => {},
 });
 
-setInterval(() => homeSlider.next(), 12000);
+const homeSliderObject = {
+  _init: () => {
+    setInterval(() => homeSlider.next(), 12000);
 
-document.querySelector('.home-slider__arrow--prev').addEventListener('click', () => homeSlider.prev());
-document.querySelector('.home-slider__arrow--next').addEventListener('click', () => homeSlider.next());
+    document.querySelector('.home-slider__arrow--prev').addEventListener('click', () => homeSlider.prev());
+    document.querySelector('.home-slider__arrow--next').addEventListener('click', () => homeSlider.next());
 
-export default homeSlider;
+    mediaCheck({
+      media: '(max-width: 768px)',
+      entry: function () {
+        homeSlider.destroy(true);
+      },
+      exit: function () {
+        homeSlider.init();
+      }
+    });
+  },
+};
+
+
+
+export default homeSliderObject;

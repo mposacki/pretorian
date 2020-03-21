@@ -6,17 +6,30 @@
 
   padding: 1rem;
 
-  background-color: transparent;
+  background-color: map-get($colors, black-light);
 
   z-index: 20;
 
-  @include breakpoint(sm) {
-    height: 9.375rem;
+  @include breakpoint(md) {
+    background-color: transparent;
   }
 
   &--fixed {
     position: fixed;
     background-color: rgba(map-get($colors, black-light), .9);
+
+    .header__bar {
+      background-color: transparent;
+    }
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+
+    @include breakpoint(md) {
+      background-color: rgba(map-get($colors, black-light), .6);
+    }
   }
 
   &__container {
@@ -158,6 +171,7 @@
   &__lang-switcher {
     font-size: 0;
     line-height: 1;
-    margin-left: 1rem;
+    padding-right: 1rem;
+    padding-left: .5rem;
   }
 }

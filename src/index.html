@@ -22,43 +22,47 @@
         <span></span>
         <span></span>
       </div>
-      <div class="header__navi">
-        <nav class="nav" role="navigation">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a data-scroll href="/#home" class="nav__link nav__link--active">Home</a>
-            </li>
-            <li class="nav__item">
-              <a data-scroll href="/#about-us" class="nav__link">About Us</a>
-            </li>
-            <li class="nav__item">
-              <a data-scroll href="/#team" class="nav__link">Team</a>
-            </li>
-            <li class="nav__item">
-              <a data-scroll href="/#players" class="nav__link">Players</a>
-            </li>
-            <li class="nav__item">
-              <a data-scroll href="/#news" class="nav__link">News</a>
-            </li>
-            <li class="nav__item">
-              <a data-scroll href="/#contact" class="nav__link">Contact</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="header__navi-close">
-          <span></span>
-          <span></span>
+      <div class="header__bar">
+        <div class="header__navi">
+          <nav class="nav" role="navigation">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a data-scroll href="/#home" class="nav__link nav__link--active">Home</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#about-us" class="nav__link">About Us</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#team" class="nav__link">Team</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#players" class="nav__link">Players</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#news" class="nav__link">News</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#contact" class="nav__link">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header__navi-close">
+            <span></span>
+            <span></span>
+          </div>
         </div>
+        <a href="/en" class="header__lang-switcher">
+          <img src="assets/images/svg/en.svg" alt="United Kingdom flag icon" class="header__icon">
+        </a>
       </div>
-      <a href="/en" class="header__lang-switcher">
-        <img src="assets/images/svg/en.svg" alt="United Kingdom flag icon" class="header__icon">
-      </a>
+      
     </div>
     <div class="header__navi-overlay"></div>
   </header>
 
   <main class="main">
     <section class="home" id="home">
+      <img src="assets/images/home-slider/home-slider-2-mobile.jpg" alt="Paintball photo" class="home-slider__image home-slider__image--mobile">
       <div class="home-slider">
         <img src="assets/images/home-slider/home-slider-1.jpg" alt="Paintball photo" class="home-slider__image">
         <img src="assets/images/home-slider/home-slider-2.jpg" alt="Paintball photo" class="home-slider__image">
@@ -81,7 +85,7 @@
     <section class="team" id="team">
       <div class="recruitment">
         <div class="recruitment__image-box">
-          <img src="assets/images/home-slider-11.jpeg" alt="recruitment photo"
+          <img src="assets/images/home-slider-11.jpg" alt="recruitment photo"
             class="recruitment__image">
         </div>
         <div class="recruitment__content">
@@ -206,7 +210,7 @@
             </div>
           </div>
           <div class="contact__form-box">
-            <form class="form">
+            <form method="POST" class="form" id="contact-form">
               <div class="form__control">
                 <label for="cfname" class="form__label">Imię/Nazwa użytkownika</label>
                 <input class="form__input" type="text" name="cfname" id="cfname">
@@ -216,8 +220,8 @@
                 <input class="form__input" type="text" name="cfmail" id="cfmail">
               </div>
               <div class="form__control">
-                <label for="csubject" class="form__label">Temat</label>
-                <select class="form__input" name="csubject" id="csubject">
+                <label for="cfsubject" class="form__label">Temat</label>
+                <select class="form__input" name="cfsubject" id="cfsubject">
                   <option value="recruitment">Rekrutacja</option>
                   <option value="other">Inne</option>
                 </select>
@@ -231,8 +235,9 @@
                     prywatności</a> i zgadzam się na przetwarzanie moich danych</label>
                 <input class="form__checkbox" type="checkbox" name="cfrodo" id="cfrodo">
               </div>
+              <div class="form__message-box"></div>
               <div class="form__btn-wrapper">
-                <button type="submit" class="btn">
+                <button type="submit" class="btn form__submit">
                   <span class="btn__text">Wyślij</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="btn__icon">
                     <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" /></svg>

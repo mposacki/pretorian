@@ -5,6 +5,7 @@ const gulp = require("gulp"),
   svgSprite = require('gulp-svg-sprite'),
   browserSync = require('browser-sync'),
   runSequence = require("run-sequence"),
+  cleanDir = require('gulp-clean-dir'),
   webpack = require('webpack'),
   named = require('vinyl-named'),
   cleanCSS = require('gulp-clean-css'),
@@ -69,7 +70,14 @@ gulp.task('imagemin', function () {
 
 gulp.task('copy', function () {
   gulp.src('src/index.html')
+    .pipe(cleanDir('./dist'))
     .pipe(gulp.dest('dist'))
+  gulp.src('src/includes/**/*')
+    .pipe(gulp.dest('dist/includes'))
+});
+
+gulp.task('clean', function() {
+  gulp.src('dist')
 });
 
 gulp.task('js:dev', () => {
