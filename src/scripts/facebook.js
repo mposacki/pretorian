@@ -97,7 +97,7 @@ export class Facebook {
           url
         } = profilImageData.data;
 
-      image.classList.add('feed__image');
+      image.classList.add('feed__heading-image');
       image.setAttribute('width', width);
       image.setAttribute('height', height);
       image.setAttribute('src', url);
@@ -247,7 +247,6 @@ export class Facebook {
     const image = document.createElement('img');
 
     image.classList.add('feed__image');
-    image.classList.add('feed__image--profile');
     image.setAttribute('src', item.attachments.data[0].media.image.src);
 
     return image;
@@ -344,7 +343,6 @@ export class Facebook {
         return item.hasOwnProperty('parent_id') ? await this.getVideoShared(item) : this.getVideo(item);
         break;
       default:
-        console.log(item);
         return false;
         break;
     }
@@ -374,7 +372,6 @@ export class Facebook {
   buildSchema = async () => {
     const feedArray = await this.getNewsFeedDataInArray(),
           newsFeedBox = document.querySelector('.news-feed');
-    console.log(feedArray);
     feedArray.map(async (feed, index) => {
       if (feed.linkedFeedData.is_published) {
         let feedElement = await this.buildSingleFeed(feed, index);

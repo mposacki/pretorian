@@ -18,10 +18,16 @@ const homeSlider = new Siema({
 
 const homeSliderObject = {
   _init: () => {
-    setInterval(() => homeSlider.next(), 12000);
+    const interval = setInterval(() => homeSlider.next(), 12000);
 
-    document.querySelector('.home-slider__arrow--prev').addEventListener('click', () => homeSlider.prev());
-    document.querySelector('.home-slider__arrow--next').addEventListener('click', () => homeSlider.next());
+    document.querySelector('.home-slider__arrow--prev').addEventListener('click', () => {
+      clearTimeout(interval);
+      homeSlider.prev();
+    });
+    document.querySelector('.home-slider__arrow--next').addEventListener('click', () => {
+      clearTimeout(interval);
+      homeSlider.next();
+    });
 
     mediaCheck({
       media: '(max-width: 768px)',

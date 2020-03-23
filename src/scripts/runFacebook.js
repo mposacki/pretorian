@@ -1,6 +1,7 @@
 'use strict';
 
 import { Facebook } from './facebook';
+import 'mediaCheck/js/mediaCheck-min';
 
 const config = {
   appId: 735733686930973
@@ -16,5 +17,5 @@ const FB = new Facebook();
       version: 'v6.0'
     });
 
-    const data = await FB.buildSchema();
+    await FB.buildSchema();
 })();
