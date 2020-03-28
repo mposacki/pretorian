@@ -4,7 +4,7 @@ import { Facebook } from './facebook';
 import 'mediaCheck/js/mediaCheck-min';
 
 const config = {
-  appId: 735733686930973
+  appId: 207581250549383
 };
 
 const FB = new Facebook();

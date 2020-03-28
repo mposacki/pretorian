@@ -4,7 +4,7 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
   z-index: 10;
-  
+
   @include breakpoint(sm) {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -24,13 +24,42 @@
     font-family: $ibmplexsans;
     letter-spacing: 1px;
     margin: 0 auto 1.5rem;
+  }
 
-    // @include breakpoint(sm) {
-    //   width: 90%;
-    // }
+  &__load-more.btn {
+    border: 1px solid map-get($colors, green);
 
-    // @include breakpoint(md) {
-    //   width: 85%;
-    // }
+    &:hover,
+    &:active,
+    &:focus {
+      .about-us__icon path {
+        fill: map-get($colors, light);
+      }
+    }
+
+    &.active {
+      .about-us__icon {
+        transform: rotate(270deg);
+      }
+    }
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 0.25rem;
+    transform: rotate(90deg);
+    transition: transform .3s ease-in-out;
+  }
+
+  &__more {
+    margin-top: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-in-out;
+
+    &.active {
+      max-height: 2000px;
+    }
   }
 }

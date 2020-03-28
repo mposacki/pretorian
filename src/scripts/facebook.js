@@ -1,9 +1,10 @@
 'use strict';
 
 const config = {
-  accessToken: 'EAAKdJVkPDh0BAIXRa1bWk1yFCJQkz9aigTbtoI3JFfMIxHZArhuPpcvR6HdIRkwVgLZBIQJiHuSBXzWVXDbq5UVhuja1ZCkdZAUFOSRwEIoq2wOlGsFWAqPU6mQmZABaEcXEEOAWY5EwEa6vXVvyJRqTAcpZA458GxpsecnuMZBD55HZAIc8yca7',
-  pageId: 101389854814863,
-  userId: 2710807292372504
+  accessToken: 'EAAC8y0azdocBAKUZAkBcUQfNZCx3BcWpDlZCJlh4SsZCatutpKHaHSZBcdgtmarEBNZCcYOsAm8AND9HSUBlBRg6BZCj5IpYPvGZB4a73M1LGmsyE6T7WR4BEZCDwIWTskcpE2ZAt4rvNSSJDxlZBEZBS5Tfp9s1bqZBxxTf65KMfC7qkowZDZD',
+  pageId: 133461083335748,
+  userId: 2710807292372504,
+  pretoriansPageId: 133461083335748
 };
 
 export class Facebook {
@@ -68,13 +69,12 @@ export class Facebook {
 
   getNameElement = () => {
     return new Promise(async (resolve) => {
-      const profileNameData = await this.api(
-        `/${config.userId}/accounts?access_token=${config.accessToken}`,
+      const account = await this.api(
+        `/${config.pageId}/?access_token=${config.accessToken}`,
         'GET'
       );
 
-      const account = profileNameData.data[0],
-            name = document.createElement('p');
+      const name = document.createElement('p');
 
       name.classList.add('feed__heading');
       name.textContent = account.name;
@@ -133,30 +133,30 @@ export class Facebook {
         "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
       });
 
-      if (!parentPostData.hasOwnProperty('error')) {
-        const postSharedContent = document.createElement('div'),
-          postSharedContentMessage = document.createElement('p'),
-          headingBox = await this.buildHeadingBox(item);
+    if (!parentPostData.hasOwnProperty('error')) {
+      const postSharedContent = document.createElement('div'),
+        postSharedContentMessage = document.createElement('p'),
+        headingBox = await this.buildHeadingBox(item);
 
-        postSharedContent.classList.add('feed__content');
-        postSharedContentMessage.classList.add('feed__content-message');
-        postSharedContentMessage.textContent = parentPostData.message;
+      postSharedContent.classList.add('feed__content');
+      postSharedContentMessage.classList.add('feed__content-message');
+      postSharedContentMessage.textContent = parentPostData.message;
 
-        postSharedContent.appendChild(headingBox);
-        postSharedContent.appendChild(postSharedContentMessage);
+      postSharedContent.appendChild(headingBox);
+      postSharedContent.appendChild(postSharedContentMessage);
 
-        return postSharedContent;
-      } else {
-        return false;
-      }
+      return postSharedContent;
+    } else {
+      return false;
+    }
   };
 
   //Content of feed (album and shared album)
   getAlbum = (item) => {
     const feedImageBox = document.createElement('div'),
-          feedMainImage = document.createElement('img'),
-          imageNumber = document.createElement('span'),
-          albumLength = item.attachments.data[0].subattachments.data.length;
+      feedMainImage = document.createElement('img'),
+      imageNumber = document.createElement('span'),
+      albumLength = item.attachments.data[0].subattachments.data.length;
 
     feedImageBox.classList.add('feed__image-box');
 
@@ -179,16 +179,16 @@ export class Facebook {
       });
 
     const feedContent = document.createElement('div'),
-          album = this.getAlbum(parentPostData),
-          headingBox = await this.buildHeadingBox(item),
-          parentMessage = document.createElement('p');
+      album = this.getAlbum(parentPostData),
+      headingBox = await this.buildHeadingBox(item),
+      parentMessage = document.createElement('p');
 
     feedContent.classList.add('feed__content');
     feedContent.appendChild(album);
     feedContent.appendChild(headingBox);
 
     parentMessage.classList.add('feed__content-message');
-    if(parentPostData.hasOwnProperty('error')) {
+    if (parentPostData.hasOwnProperty('error')) {
       parentMessage.textContent = item.attachments.data[0].title;
     } else {
       parentMessage.textContent = parentPostData.message;
@@ -201,8 +201,8 @@ export class Facebook {
   //Content of feed (event and shared event)
   getEvent = (item) => {
     const feedContent = document.createElement('div'),
-          feedMainImage = document.createElement('img'),
-          eventName = document.createElement('p');
+      feedMainImage = document.createElement('img'),
+      eventName = document.createElement('p');
 
     feedContent.classList.add('feed__content');
 
@@ -230,8 +230,8 @@ export class Facebook {
   //Content of feed (cover photo and shared cover photo)
   getCoverPhotoShared = (item) => {
     const image = this.getPhoto(item),
-          feedContent = document.createElement('div'),
-          description = document.createElement('p');
+      feedContent = document.createElement('div'),
+      description = document.createElement('p');
 
     feedContent.classList.add('feed__content');
     description.classList.add('feed__content-message');
@@ -270,7 +270,7 @@ export class Facebook {
         "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
       });
 
-    if(!parentPostData.hasOwnProperty('error')) {
+    if (!parentPostData.hasOwnProperty('error')) {
       const feedContent = document.createElement('div'),
         video = this.getVideo(item),
         parentMessage = document.createElement('p');
@@ -290,8 +290,8 @@ export class Facebook {
 
   buildHeadingBox = async (item) => {
     const headingBox = document.createElement('div'),
-          feedTime = document.createElement('p'),
-          headingBoxContent = document.createElement('div');
+      feedTime = document.createElement('p'),
+      headingBoxContent = document.createElement('div');
     const profileImage = await this.getProfileImage();
     const profileName = await this.getNameElement();
 
@@ -350,8 +350,8 @@ export class Facebook {
 
   buildSingleFeed = async (item) => {
     const feedWrapper = document.createElement('div'),
-          headingBox = await this.buildHeadingBox(item),
-          feedContent = await this.checkFeedContentType(item.linkedFeedData);
+      headingBox = await this.buildHeadingBox(item),
+      feedContent = await this.checkFeedContentType(item.linkedFeedData);
     feedWrapper.classList.add('feed');
     feedWrapper.appendChild(headingBox);
 
@@ -362,7 +362,7 @@ export class Facebook {
       feedWrapper.appendChild(feedMessage);
     }
 
-    if(feedContent !== false) {
+    if (feedContent !== false) {
       feedWrapper.appendChild(feedContent);
     }
 
@@ -371,7 +371,7 @@ export class Facebook {
 
   buildSchema = async () => {
     const feedArray = await this.getNewsFeedDataInArray(),
-          newsFeedBox = document.querySelector('.news-feed');
+      newsFeedBox = document.querySelector('.news-feed');
     feedArray.map(async (feed, index) => {
       if (feed.linkedFeedData.is_published) {
         let feedElement = await this.buildSingleFeed(feed, index);
@@ -387,7 +387,6 @@ export class Facebook {
 
     return new Promise(async (resolve) => {
       const newsFeed = await this.getNewsFeedList();
-
       let newsFeedArray = await Promise.all(newsFeed.data.map((item, index) => this.getLinkedFeedData(item.id, index)));
 
       newsFeedArray.sort(function (feed1, feed2) {
@@ -399,7 +398,7 @@ export class Facebook {
           ...item,
           linkedFeedData: newsFeedArray[index].linkedFeedData
         });
-      })
+      });
 
       resolve(feedArray);
     });

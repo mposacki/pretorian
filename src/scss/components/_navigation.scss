@@ -54,6 +54,11 @@
 
     @include breakpoint(md) {
       color: map-get($colors, light);
+      font-size: 1.125rem;
+    }
+
+    @include breakpoint(lg) {
+      font-size: 1.25rem;
     }
 
     &--active {

@@ -599,7 +599,11 @@ body {
       outline: 0; }
     @media (min-width: 992px) {
       .nav__link {
-        color: #fff; } }
+        color: #fff;
+        font-size: 1.125rem; } }
+    @media (min-width: 1200px) {
+      .nav__link {
+        font-size: 1.25rem; } }
     .nav__link--active {
       color: #609b79; }
 
@@ -689,6 +693,35 @@ body {
     font-family: "IBM Plex Sans", sans-serif;
     letter-spacing: 1px;
     margin: 0 auto 1.5rem; }
+  .about-us__load-more.btn {
+    border: 1px solid #002d22; }
+    .about-us__load-more.btn:hover .about-us__icon path, .about-us__load-more.btn:active .about-us__icon path, .about-us__load-more.btn:focus .about-us__icon path {
+      fill: #fff; }
+    .about-us__load-more.btn.active .about-us__icon {
+      -webkit-transform: rotate(270deg);
+          -ms-transform: rotate(270deg);
+              transform: rotate(270deg); }
+  .about-us__icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 0.25rem;
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    transition: -webkit-transform .3s ease-in-out;
+    -o-transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out; }
+  .about-us__more {
+    margin-top: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 1s ease-in-out;
+    -o-transition: max-height 1s ease-in-out;
+    transition: max-height 1s ease-in-out; }
+    .about-us__more.active {
+      max-height: 2000px; }
 
 .recruitment {
   display: -webkit-box;
@@ -1009,6 +1042,8 @@ body {
     outline: none;
     color: #f2f2f2;
     background-color: #00140f; }
+    .btn:active .btn__icon path, .btn:focus .btn__icon path {
+      fill: #fff; }
   .btn__text {
     text-transform: uppercase; }
   .btn__icon {
@@ -1227,40 +1262,94 @@ body {
   position: relative;
   margin-bottom: 5rem; }
   .gallery-content {
-    height: 31.25rem; }
+    height: 18rem; }
+    @media (min-width: 768px) {
+      .gallery-content {
+        height: 25rem; } }
+    @media (min-width: 992px) {
+      .gallery-content {
+        height: 31.25rem; } }
+  .gallery__item {
+    width: 100%;
+    height: 18rem;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; }
+    .gallery__item--1 {
+      background-image: url("../images/gallery/home-slider-1.jpg"); }
+    .gallery__item--2 {
+      background-image: url("../images/gallery/home-slider-2.jpg"); }
+    .gallery__item--3 {
+      background-image: url("../images/gallery/home-slider-3.jpg"); }
+    .gallery__item--4 {
+      background-image: url("../images/gallery/home-slider-4.jpg"); }
+    .gallery__item--5 {
+      background-image: url("../images/gallery/home-slider-5.jpg"); }
+    .gallery__item--6 {
+      background-image: url("../images/gallery/home-slider-6.jpg"); }
+    .gallery__item--7 {
+      background-image: url("../images/gallery/home-slider-7.jpg"); }
+    .gallery__item--8 {
+      background-image: url("../images/gallery/home-slider-8.jpg"); }
+    .gallery__item--9 {
+      background-image: url("../images/gallery/home-slider-9.jpg"); }
+    .gallery__item--10 {
+      background-image: url("../images/gallery/home-slider-10.jpg"); }
+    .gallery__item--11 {
+      background-image: url("../images/gallery/home-slider-11.jpg"); }
+    .gallery__item--12 {
+      background-image: url("../images/gallery/home-slider-12.jpg"); }
+    .gallery__item--13 {
+      background-image: url("../images/gallery/home-slider-13.jpg"); }
+    .gallery__item--14 {
+      background-image: url("../images/gallery/home-slider-14.jpg"); }
+    @media (min-width: 768px) {
+      .gallery__item {
+        height: 25rem; } }
+    @media (min-width: 992px) {
+      .gallery__item {
+        height: 31.25rem; } }
   .gallery__image {
-    display: block;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     max-width: 100%;
-    height: 31.25rem;
-    margin: 0 auto;
-    -o-object-fit: contain;
-       object-fit: contain; }
+    height: 31.25rem; }
   .gallery__arrow {
     position: absolute;
-    top: 50%;
+    bottom: -3.5rem;
     width: 20px;
     height: 36px;
     z-index: 10;
     cursor: pointer; }
-    @media (min-width: 768px) {
+    @media (min-width: 1200px) {
       .gallery__arrow {
+        top: 50%;
+        bottom: inherit;
         width: 30px;
         height: 54px; } }
     .gallery__arrow--next {
-      right: 0;
-      -webkit-transform: translateY(-50%);
-          -ms-transform: translateY(-50%);
-              transform: translateY(-50%); }
-      @media (min-width: 576px) {
+      right: 40%; }
+      @media (min-width: 1200px) {
         .gallery__arrow--next {
+          -webkit-transform: translateY(-50%);
+              -ms-transform: translateY(-50%);
+                  transform: translateY(-50%);
           right: -2rem; } }
     .gallery__arrow--prev {
-      left: 0;
-      -webkit-transform: translateY(-50%) rotate(180deg);
-          -ms-transform: translateY(-50%) rotate(180deg);
-              transform: translateY(-50%) rotate(180deg); }
-      @media (min-width: 576px) {
+      left: 40%;
+      -webkit-transform: rotate(180deg);
+          -ms-transform: rotate(180deg);
+              transform: rotate(180deg); }
+      @media (min-width: 1200px) {
         .gallery__arrow--prev {
+          -webkit-transform: translateY(-50%) rotate(180deg);
+              -ms-transform: translateY(-50%) rotate(180deg);
+                  transform: translateY(-50%) rotate(180deg);
           left: -2rem; } }
 
 /*# sourceMappingURL=main.css.map */

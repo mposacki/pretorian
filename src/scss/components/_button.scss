@@ -21,6 +21,10 @@
     outline: none;
     color: darken(map-get($colors, light), 5%);
     background-color: darken(map-get($colors, green), 5%);
+
+    .btn__icon path {
+      fill: map-get($colors, light);
+    }
   }
 
   &__text {
