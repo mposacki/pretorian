@@ -1072,6 +1072,7 @@ body {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   max-width: 100%;
+  height: auto;
   overflow: hidden; }
   @media (min-width: 768px) {
     .news-feed {
@@ -1079,6 +1080,8 @@ body {
   @media (min-width: 1200px) {
     .news-feed {
       max-height: 1200px; } }
+  .news-feed__link {
+    border: 1px solid #002d22; }
 
 .feed {
   width: 100%;
@@ -1103,12 +1106,8 @@ body {
       width: 32%;
       margin-right: 2%;
       margin-bottom: 2%; }
-      .feed:nth-child(n+5) {
-        display: block; }
       .feed:nth-child(n+9) {
-        display: block; }
-      .feed:nth-child(n+12) {
-        display: none; } }
+        display: block; } }
   .feed__heading-box {
     display: -webkit-box;
     display: -webkit-flex;

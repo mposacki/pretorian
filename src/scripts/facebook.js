@@ -171,33 +171,6 @@ export class Facebook {
     return feedImageBox;
   }
 
-  getAlbumShared = async (item) => {
-    const parentPostData = await this.api(
-      `/${item.parent_id}?access_token=${config.accessToken}`,
-      'GET', {
-        "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
-      });
-
-    const feedContent = document.createElement('div'),
-      album = this.getAlbum(parentPostData),
-      headingBox = await this.buildHeadingBox(item),
-      parentMessage = document.createElement('p');
-
-    feedContent.classList.add('feed__content');
-    feedContent.appendChild(album);
-    feedContent.appendChild(headingBox);
-
-    parentMessage.classList.add('feed__content-message');
-    if (parentPostData.hasOwnProperty('error')) {
-      parentMessage.textContent = item.attachments.data[0].title;
-    } else {
-      parentMessage.textContent = parentPostData.message;
-    }
-    feedContent.appendChild(parentMessage);
-
-    return feedContent;
-  }
-
   //Content of feed (event and shared event)
   getEvent = (item) => {
     const feedContent = document.createElement('div'),
@@ -325,7 +298,7 @@ export class Facebook {
 
     switch (item.attachments.data[0].type) {
       case 'album':
-        return item.hasOwnProperty('parent_id') ? await this.getAlbumShared(item) : this.getAlbum(item);
+        return this.getAlbum(item);
         break;
       case 'event':
         return this.getEvent(item);
@@ -348,36 +321,44 @@ export class Facebook {
     }
   };
 
-  buildSingleFeed = async (item) => {
-    const feedWrapper = document.createElement('div'),
-      headingBox = await this.buildHeadingBox(item),
-      feedContent = await this.checkFeedContentType(item.linkedFeedData);
-    feedWrapper.classList.add('feed');
-    feedWrapper.appendChild(headingBox);
+  buildSingleFeed = (item, index) => {
+    return new Promise(async (resolve) => {
+      const feedWrapper = document.createElement('div'),
+        headingBox = await this.buildHeadingBox(item),
+        feedContent = await this.checkFeedContentType(item.linkedFeedData);
+      feedWrapper.classList.add('feed');
+      feedWrapper.appendChild(headingBox);
 
-    if (item.message) {
-      const feedMessage = document.createElement('p');
-      feedMessage.classList.add('feed__message');
-      feedMessage.textContent = item.message;
-      feedWrapper.appendChild(feedMessage);
-    }
+      if (item.message) {
+        const feedMessage = document.createElement('p');
+        feedMessage.classList.add('feed__message');
+        feedMessage.textContent = item.message;
+        feedWrapper.appendChild(feedMessage);
+      }
 
-    if (feedContent !== false) {
-      feedWrapper.appendChild(feedContent);
-    }
+      if (feedContent !== false) {
+        feedWrapper.appendChild(feedContent);
+      }
 
-    return feedWrapper;
+      resolve({
+        element: feedWrapper,
+        index
+      });
+    });
   };
 
   buildSchema = async () => {
     const feedArray = await this.getNewsFeedDataInArray(),
       newsFeedBox = document.querySelector('.news-feed');
-    feedArray.map(async (feed, index) => {
-      if (feed.linkedFeedData.is_published) {
-        let feedElement = await this.buildSingleFeed(feed, index);
-        newsFeedBox.appendChild(feedElement);
-      }
+    let arrayOfFeedWithIndex = await Promise.all(feedArray.map((feed, index) => this.buildSingleFeed(feed, index)));
+
+    arrayOfFeedWithIndex.sort(function (feed1, feed2) {
+      return feed1.index - feed2.index;
     });
+
+    arrayOfFeedWithIndex.map(item => {
+      newsFeedBox.appendChild(item.element);
+    })
 
     return true;
   };
@@ -387,13 +368,14 @@ export class Facebook {
 
     return new Promise(async (resolve) => {
       const newsFeed = await this.getNewsFeedList();
-      let newsFeedArray = await Promise.all(newsFeed.data.map((item, index) => this.getLinkedFeedData(item.id, index)));
+      const smallerNewsFeedArray = newsFeed.data.splice(0, 10);
+      let newsFeedArray = await Promise.all(smallerNewsFeedArray.map((item, index) => this.getLinkedFeedData(item.id, index)));
 
       newsFeedArray.sort(function (feed1, feed2) {
         return feed1.id - feed2.id;
       });
 
-      newsFeed.data.map((item, index) => {
+      smallerNewsFeedArray.map((item, index) => {
         feedArray.push({
           ...item,
           linkedFeedData: newsFeedArray[index].linkedFeedData
