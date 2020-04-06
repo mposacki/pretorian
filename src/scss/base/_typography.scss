@@ -28,15 +28,15 @@
 }
 
 .link {
-  color: map-get($colors, green-light--link);
-
-  &:hover {
-    color: map-get($colors, green-light--active);
+  &,
+  &:visited {
+    color: map-get($colors, green-light--link);
   }
-
+  
+  &:hover,
   &:active,
   &:focus {
-    color: map-get($colors, green-light-2);
+    color: map-get($colors, green-light--active);
     outline: none;
     text-decoration: none;
   }

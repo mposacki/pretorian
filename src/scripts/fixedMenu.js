@@ -23,15 +23,17 @@ const fixedMenu = {
     let fromTop = window.scrollY;
 
     navLinks.forEach(link => {
-      let section = document.querySelector(link.hash);
+      if (link.href.indexOf('#') !== -1) {
+        let section = document.querySelector(link.hash);
 
-      if (
-        section.offsetTop <= fromTop &&
-        section.offsetTop + section.offsetHeight > fromTop
-      ) {
-        link.classList.add("nav__link--active");
-      } else {
-        link.classList.remove("nav__link--active");
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          link.classList.add("nav__link--active");
+        } else {
+          link.classList.remove("nav__link--active");
+        }
       }
     });
   }

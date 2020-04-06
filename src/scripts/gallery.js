@@ -18,7 +18,7 @@ const gallery = new Siema({
 
 const galleryObject = {
   _init: () => {
-    const interval = setInterval(() => gallery.next(), 4500);
+    const interval = setInterval(() => gallery.next(), 450000);
 
     document.querySelector('.gallery__arrow--prev').addEventListener('click', () => {
       clearTimeout(interval);

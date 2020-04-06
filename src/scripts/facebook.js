@@ -1,10 +1,10 @@
 'use strict';
+import axios from 'axios';
 
 const config = {
-  accessToken: 'EAAC8y0azdocBAKUZAkBcUQfNZCx3BcWpDlZCJlh4SsZCatutpKHaHSZBcdgtmarEBNZCcYOsAm8AND9HSUBlBRg6BZCj5IpYPvGZB4a73M1LGmsyE6T7WR4BEZCDwIWTskcpE2ZAt4rvNSSJDxlZBEZBS5Tfp9s1bqZBxxTf65KMfC7qkowZDZD',
-  pageId: 133461083335748,
-  userId: 2710807292372504,
-  pretoriansPageId: 133461083335748
+  accessToken: 'EAADouq1OKuABAGUHG0VpC8cM4VQRh6ggfiUTuj99pVZAO6UcmlZB2Bzer24YgsdNhujoKZCEFUdQVdLzVPYM6xwmR3pxnlnMQnxOwTKVNkXsxaAOff0raf09l2Xb0B0xCT5fUJZCh9lbx3sr7tx4H0ynZAkLdvg8DhSAk8PyDuAZDZD',
+  // accessToken: 'EAAC8y0azdocBAKUZAkBcUQfNZCx3BcWpDlZCJlh4SsZCatutpKHaHSZBcdgtmarEBNZCcYOsAm8AND9HSUBlBRg6BZCj5IpYPvGZB4a73M1LGmsyE6T7WR4BEZCDwIWTskcpE2ZAt4rvNSSJDxlZBEZBS5Tfp9s1bqZBxxTf65KMfC7qkowZDZD',
+  pageId: 133461083335748
 };
 
 export class Facebook {
@@ -69,15 +69,15 @@ export class Facebook {
 
   getNameElement = () => {
     return new Promise(async (resolve) => {
-      const account = await this.api(
-        `/${config.pageId}/?access_token=${config.accessToken}`,
-        'GET'
-      );
+      // const account = await this.api(
+      //   `/${config.pageId}/?access_token=${config.accessToken}`,
+      //   'GET'
+      // );
 
       const name = document.createElement('p');
 
       name.classList.add('feed__heading');
-      name.textContent = account.name;
+      name.textContent = 'Fundacja Pretorians';
 
       resolve(name);
     });
@@ -85,22 +85,22 @@ export class Facebook {
 
   getProfileImage = () => {
     return new Promise(async (resolve) => {
-      const profilImageData = await this.api(
-        `/${config.pageId}/picture?&redirect=false`,
-        'GET'
-      );
+      // const profilImageData = await this.api(
+      //   `/${config.pageId}/picture?&redirect=false`,
+      //   'GET'
+      // );
 
-      const image = document.createElement('img'),
-        {
-          width,
-          height,
-          url
-        } = profilImageData.data;
+      const image = document.createElement('img');
+      //   {
+      //     width,
+      //     height,
+      //     url
+      //   } = profilImageData.data;
 
       image.classList.add('feed__heading-image');
-      image.setAttribute('width', width);
-      image.setAttribute('height', height);
-      image.setAttribute('src', url);
+      image.setAttribute('width', '50px');
+      image.setAttribute('height', '50px');
+      image.setAttribute('src', 'https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-1/cp0/p50x50/74180216_3143798862301940_1211112753779965952_n.png?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=CIDyUYlCH3gAX_6ZyfQ&_nc_ht=scontent-waw1-1.xx&oh=d5a7a80be0a1a973a6c03ad8717ba08e&oe=5EB27AD0');
 
       resolve(image);
     });
@@ -128,7 +128,7 @@ export class Facebook {
 
   getPostShared = async (item) => {
     const parentPostData = await this.api(
-      `/${item.parent_id}?access_token=${config.accessToken}`,
+      `/${item.parent_id}`,
       'GET', {
         "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
       });
@@ -238,7 +238,7 @@ export class Facebook {
 
   getVideoShared = async (item) => {
     const parentPostData = await this.api(
-      `/${item.parent_id}?access_token=${config.accessToken}`,
+      `/${item.parent_id}`,
       'GET', {
         "fields": "id,full_picture,message,is_published,height,width,parent_id,attachments"
       });
@@ -348,34 +348,95 @@ export class Facebook {
   };
 
   buildSchema = async () => {
-    const feedArray = await this.getNewsFeedDataInArray(),
-      newsFeedBox = document.querySelector('.news-feed');
-    let arrayOfFeedWithIndex = await Promise.all(feedArray.map((feed, index) => this.buildSingleFeed(feed, index)));
+    const newsFeed = await this.getNewsFeedList(),
+          newsFeedBox = document.querySelector('.news-feed');
 
-    arrayOfFeedWithIndex.sort(function (feed1, feed2) {
-      return feed1.index - feed2.index;
-    });
+    axios.get('./includes/feed.json')
+    .then(async res => {
+      const jsonData = res.data;
 
-    arrayOfFeedWithIndex.map(item => {
-      newsFeedBox.appendChild(item.element);
+      if (newsFeed.hasOwnProperty('error')) {
+        let arrayOfFeedWithIndex = await Promise.all(jsonData.splice(0, 10).map((feed, index) => this.buildSingleFeed(feed, index)));
+
+        arrayOfFeedWithIndex.sort(function (feed1, feed2) {
+          return feed1.index - feed2.index;
+        });
+
+        arrayOfFeedWithIndex.map(item => {
+          newsFeedBox.appendChild(item.element);
+        })
+
+        return true;
+      }
+
+      newsFeed.data.some(async (item, index) => {
+        const pos = jsonData.map(el => el.id).indexOf(item.id);
+
+        if (pos === 0) {
+          let arrayOfFeedWithIndex = await Promise.all(jsonData.splice(0, 10).map((feed, index) => this.buildSingleFeed(feed, index)));
+
+          arrayOfFeedWithIndex.sort(function (feed1, feed2) {
+            return feed1.index - feed2.index;
+          });
+
+          arrayOfFeedWithIndex.map(item => {
+            newsFeedBox.appendChild(item.element);
+          })
+
+          return true;
+        } else if (pos === -1) {
+          const feedArray = await this.getNewsFeedDataInArray();
+          let arrayOfFeedWithIndex = await Promise.all(feedArray.map((feed, index) => this.buildSingleFeed(feed, index)));
+
+          arrayOfFeedWithIndex.sort(function (feed1, feed2) {
+            return feed1.index - feed2.index;
+          });
+
+          arrayOfFeedWithIndex.map(item => {
+            newsFeedBox.appendChild(item.element);
+          })
+
+          return true;
+        } else {
+          const feedArray = await this.getNewsFeedDataInArray(pos);
+
+          feedArray.reverse().map(item => {
+            jsonData.unshift(item);
+          })
+          //console.log(jsonData);
+
+          let arrayOfFeedWithIndex = await Promise.all(jsonData.map((feed, index) => this.buildSingleFeed(feed, index)));
+
+          arrayOfFeedWithIndex.sort(function (feed1, feed2) {
+            return feed1.index - feed2.index;
+          });
+
+          arrayOfFeedWithIndex.map(item => {
+            newsFeedBox.appendChild(item.element);
+          })
+
+          //TODO Save to file
+          return true;
+        }
+      });
+      
     })
 
     return true;
   };
 
-  getNewsFeedDataInArray = () => {
+  getNewsFeedDataInArray = (limit = 12) => {
     let feedArray = [];
 
     return new Promise(async (resolve) => {
-      const newsFeed = await this.getNewsFeedList();
-      const smallerNewsFeedArray = newsFeed.data.splice(0, 10);
-      let newsFeedArray = await Promise.all(smallerNewsFeedArray.map((item, index) => this.getLinkedFeedData(item.id, index)));
+      const newsFeed = await this.getNewsFeedList(limit);
+      let newsFeedArray = await Promise.all(newsFeed.data.map((item, index) => this.getLinkedFeedData(item.id, index)));
 
       newsFeedArray.sort(function (feed1, feed2) {
         return feed1.id - feed2.id;
       });
 
-      smallerNewsFeedArray.map((item, index) => {
+      newsFeed.data.map((item, index) => {
         feedArray.push({
           ...item,
           linkedFeedData: newsFeedArray[index].linkedFeedData
@@ -386,10 +447,10 @@ export class Facebook {
     });
   };
 
-  getNewsFeedList = () => {
+  getNewsFeedList = (limit = 12) => {
     return new Promise(async (resolve) => {
       const newsFeedData = await this.api(
-        `/${config.pageId}/feed?access_token=${config.accessToken}`,
+        `/${config.pageId}/feed?limit=${limit}&access_token=${config.accessToken}`,
         'GET'
       );
 
