@@ -16,12 +16,6 @@
     background-repeat: no-repeat;
     background-position: center;
 
-    @for $i from 1 through 250 {
-      &--#{$i} {
-        background-image: url('../images/gallery/gallery-slider-#{$i}.jpg');
-      }
-    }
-
     @include breakpoint(sm) {
       height: 25rem;
     }
