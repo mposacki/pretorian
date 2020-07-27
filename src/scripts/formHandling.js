@@ -44,7 +44,7 @@ if (formSubmit) {
         if (data[0] === '1') {
           const letterEl = document.createElement('span');
           letterEl.classList.add('form__error');
-          letterEl.textContent = err;
+          letterEl.textContent = data;
           msgBox.appendChild(letterEl);
           setTimeout(function () {
             msgBox.removeChild(letterEl);

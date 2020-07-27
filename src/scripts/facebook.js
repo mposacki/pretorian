@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 const config = {
-  accessToken: 'EAADouq1OKuABAGUHG0VpC8cM4VQRh6ggfiUTuj99pVZAO6UcmlZB2Bzer24YgsdNhujoKZCEFUdQVdLzVPYM6xwmR3pxnlnMQnxOwTKVNkXsxaAOff0raf09l2Xb0B0xCT5fUJZCh9lbx3sr7tx4H0ynZAkLdvg8DhSAk8PyDuAZDZD',
+  accessToken: 'EAADouq1OKuABAKqMZCg9EfDk2W8qXhmBVpzmfGTHrldMVue0Wba7UxdfNhszz8ph1sd6fnNX99b5DXwlwKnBAyu7fUOEZCzufzhYiT6IwZC9uZAdzJm8mZAwAC7iCb9LZAJmOQOrTcZBQ38HZBvIXDcUWZBvgTF8oDEwCuX3eOOXfExarbMnuSLiN',
+  // accessToken: 'EAADouq1OKuABAGUHG0VpC8cM4VQRh6ggfiUTuj99pVZAO6UcmlZB2Bzer24YgsdNhujoKZCEFUdQVdLzVPYM6xwmR3pxnlnMQnxOwTKVNkXsxaAOff0raf09l2Xb0B0xCT5fUJZCh9lbx3sr7tx4H0ynZAkLdvg8DhSAk8PyDuAZDZD',
   // accessToken: 'EAAC8y0azdocBAKUZAkBcUQfNZCx3BcWpDlZCJlh4SsZCatutpKHaHSZBcdgtmarEBNZCcYOsAm8AND9HSUBlBRg6BZCj5IpYPvGZB4a73M1LGmsyE6T7WR4BEZCDwIWTskcpE2ZAt4rvNSSJDxlZBEZBS5Tfp9s1bqZBxxTf65KMfC7qkowZDZD',
   pageId: 133461083335748
 };
@@ -90,6 +91,8 @@ export class Facebook {
       //   'GET'
       // );
 
+      // console.log(profilImageData.data.url);
+
       const image = document.createElement('img');
       //   {
       //     width,
@@ -100,7 +103,7 @@ export class Facebook {
       image.classList.add('feed__heading-image');
       image.setAttribute('width', '50px');
       image.setAttribute('height', '50px');
-      image.setAttribute('src', 'https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-1/cp0/p50x50/74180216_3143798862301940_1211112753779965952_n.png?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=CIDyUYlCH3gAX_6ZyfQ&_nc_ht=scontent-waw1-1.xx&oh=d5a7a80be0a1a973a6c03ad8717ba08e&oe=5EB27AD0');
+      image.setAttribute('src', 'https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-1/cp0/p50x50/74180216_3143798862301940_1211112753779965952_n.png?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=-dHcfoOPjh8AX8AyIs7&_nc_ht=scontent-waw1-1.xx&oh=c79f84668b52e5e1a1ae7b0674d78073&oe=5F44D150');
 
       resolve(image);
     });
@@ -351,6 +354,10 @@ export class Facebook {
     const newsFeed = await this.getNewsFeedList(),
           newsFeedBox = document.querySelector('.news-feed');
 
+          const feedArray = await this.getNewsFeedDataInArray();
+          // console.log(feedArray);
+          // debugger;
+
     axios.get('./includes/feed.json')
     .then(async res => {
       const jsonData = res.data;
@@ -386,6 +393,7 @@ export class Facebook {
           return true;
         } else if (pos === -1) {
           const feedArray = await this.getNewsFeedDataInArray();
+          
           let arrayOfFeedWithIndex = await Promise.all(feedArray.map((feed, index) => this.buildSingleFeed(feed, index)));
 
           arrayOfFeedWithIndex.sort(function (feed1, feed2) {
@@ -403,7 +411,6 @@ export class Facebook {
           feedArray.reverse().map(item => {
             jsonData.unshift(item);
           })
-          //console.log(jsonData);
 
           let arrayOfFeedWithIndex = await Promise.all(jsonData.map((feed, index) => this.buildSingleFeed(feed, index)));
 
@@ -419,7 +426,7 @@ export class Facebook {
           return true;
         }
       });
-      
+
     })
 
     return true;
@@ -453,6 +460,8 @@ export class Facebook {
         `/${config.pageId}/feed?limit=${limit}&access_token=${config.accessToken}`,
         'GET'
       );
+      // console.log(newsFeedData);
+      // debugger;
 
       resolve(newsFeedData);
     });
