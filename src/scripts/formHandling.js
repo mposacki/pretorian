@@ -57,6 +57,7 @@ if (formSubmit) {
           document.querySelector('.form__submit').disabled = true;
           setTimeout(function () {
             msgBox.removeChild(letterEl);
+            document.querySelector('.form__submit').disabled = false;
           }, 3000)
         }
       }).catch((err) => {

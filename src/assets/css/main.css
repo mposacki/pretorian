@@ -1167,7 +1167,8 @@ body {
   .feed__video {
     display: block;
     margin: 0 auto;
-    padding-bottom: 1rem; }
+    padding-bottom: 1rem;
+    max-width: 100%; }
   .feed__event-name, .feed__content-message {
     color: #000;
     font-size: .875rem;

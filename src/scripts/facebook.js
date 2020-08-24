@@ -1,5 +1,6 @@
 'use strict';
 import axios from 'axios';
+import feedJSON from './feed';
 
 const config = {
   accessToken: 'EAADouq1OKuABAKqMZCg9EfDk2W8qXhmBVpzmfGTHrldMVue0Wba7UxdfNhszz8ph1sd6fnNX99b5DXwlwKnBAyu7fUOEZCzufzhYiT6IwZC9uZAdzJm8mZAwAC7iCb9LZAJmOQOrTcZBQ38HZBvIXDcUWZBvgTF8oDEwCuX3eOOXfExarbMnuSLiN',
@@ -356,14 +357,11 @@ export class Facebook {
 
           const feedArray = await this.getNewsFeedDataInArray();
           // console.log(feedArray);
+          // console.log(feedJSON);
           // debugger;
 
-    axios.get('./includes/feed.json')
-    .then(async res => {
-      const jsonData = res.data;
-
       if (newsFeed.hasOwnProperty('error')) {
-        let arrayOfFeedWithIndex = await Promise.all(jsonData.splice(0, 10).map((feed, index) => this.buildSingleFeed(feed, index)));
+        let arrayOfFeedWithIndex = await Promise.all(feedJSON.splice(0, 10).map((feed, index) => this.buildSingleFeed(feed, index)));
 
         arrayOfFeedWithIndex.sort(function (feed1, feed2) {
           return feed1.index - feed2.index;
@@ -377,10 +375,10 @@ export class Facebook {
       }
 
       newsFeed.data.some(async (item, index) => {
-        const pos = jsonData.map(el => el.id).indexOf(item.id);
+        const pos = feedJSON.map(el => el.id).indexOf(item.id);
 
         if (pos === 0) {
-          let arrayOfFeedWithIndex = await Promise.all(jsonData.splice(0, 10).map((feed, index) => this.buildSingleFeed(feed, index)));
+          let arrayOfFeedWithIndex = await Promise.all(feedJSON.splice(0, 10).map((feed, index) => this.buildSingleFeed(feed, index)));
 
           arrayOfFeedWithIndex.sort(function (feed1, feed2) {
             return feed1.index - feed2.index;
@@ -409,10 +407,10 @@ export class Facebook {
           const feedArray = await this.getNewsFeedDataInArray(pos);
 
           feedArray.reverse().map(item => {
-            jsonData.unshift(item);
+            feedJSON.unshift(item);
           })
 
-          let arrayOfFeedWithIndex = await Promise.all(jsonData.map((feed, index) => this.buildSingleFeed(feed, index)));
+          let arrayOfFeedWithIndex = await Promise.all(feedJSON.map((feed, index) => this.buildSingleFeed(feed, index)));
 
           arrayOfFeedWithIndex.sort(function (feed1, feed2) {
             return feed1.index - feed2.index;
@@ -426,8 +424,6 @@ export class Facebook {
           return true;
         }
       });
-
-    })
 
     return true;
   };
