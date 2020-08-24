@@ -9,9 +9,6 @@
 @import 'base/global';
 @import 'base/typography';
 
-// @import 'vendors/glider';
-@import 'vendors/slick';
-
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/layout';
@@ -24,4 +21,6 @@
 @import 'components/players';
 @import 'components/contact';
 @import 'components/button';
+@import 'components/feed';
 @import 'components/form';
+@import 'components/gallery';

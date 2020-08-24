@@ -61,7 +61,8 @@
   &__content-wrap {
     padding-left: 1rem;
     padding-right: 1rem;
-    
+    max-width: 56rem;
+
     @include breakpoint(md) {
       padding: 0 3rem;
     }
@@ -82,9 +83,5 @@
     max-height: 550px;
     margin-left: auto;
     margin-right: auto;
-
-    @include breakpoint(md) {
-      margin-left: 0;
-    }
   }
 }

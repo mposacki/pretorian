@@ -19,15 +19,10 @@ module.exports = {
                     ]
                 ],
                 plugins: [
-                    "@babel/plugin-transform-arrow-functions"
+                    "@babel/plugin-transform-arrow-functions",
+                    "@babel/plugin-proposal-class-properties"
                 ]
             }
         }],
-    },
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        })
-    ]
+    }
 };

@@ -8,6 +8,20 @@
    <meta name="description" content="Pretorian">
    <meta name="keywords"
      content="pretorian, paintball, group, team, paintball team, players, fundation, charity">
+  <link rel="apple-touch-icon" sizes="57x57" href="favico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css" type="text/css">
@@ -17,41 +31,49 @@
   <header class="header">
     <div class="container header__container">
       <img src="assets/images/logo/logo-white@x0.5.png" alt="Pretorian logo image" class="header__logo">
-      <a href="/en" class="header__lang-switcher">
-        <img src="assets/images/svg/en.svg" alt="United Kingdom flag icon" class="header__icon">
-      </a>
       <div class="header__navi-burger">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <div class="header__navi">
-        <nav class="nav" role="navigation">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="/#home" class="nav__link">Home</a>
-            </li>
-            <li class="nav__item">
-              <a href="/#about-us" class="nav__link">About Us</a>
-            </li>
-            <li class="nav__item">
-              <a href="/#team" class="nav__link">Team</a>
-            </li>
-            <li class="nav__item">
-              <a href="/#players" class="nav__link">Players</a>
-            </li>
-            <li class="nav__item">
-              <a href="/#news" class="nav__link">News</a>
-            </li>
-            <li class="nav__item">
-              <a href="/#contact" class="nav__link">Contact</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="header__navi-close">
-          <span></span>
-          <span></span>
+      <div class="header__bar">
+        <div class="header__navi">
+          <nav class="nav" role="navigation">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a data-scroll href="/#home" class="nav__link nav__link--active">Start</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#about-us" class="nav__link">O nas</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#recruitment" class="nav__link">Rekrutacja</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#players" class="nav__link">Drużyna</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#news" class="nav__link">Aktualności</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#gallery" class="nav__link">Galeria</a>
+              </li>
+              <li class="nav__item">
+                <a data-scroll href="/#contact" class="nav__link">Kontakt</a>
+              </li>
+              <li class="nav__item">
+                <a href="https://pretorians.pl/phpbb3/index.php" class="nav__link">Forum</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header__navi-close">
+            <span></span>
+            <span></span>
+          </div>
         </div>
+        <a href="/en" class="header__lang-switcher">
+          <img src="assets/images/svg/en.svg" alt="United Kingdom flag icon" class="header__icon">
+        </a>
       </div>
     </div>
     <div class="header__navi-overlay"></div>
@@ -59,39 +81,64 @@
 
   <main class="main">
     <section class="home" id="home">
+      <img src="assets/images/home-slider/home-slider-2-mobile.jpg" alt="Paintball photo" class="home-slider__image home-slider__image--mobile">
       <div class="home-slider">
-        <img src="assets/images/home-slider-1.jpg" data-lazy="assets/images/home-slider-1.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-2.jpg" data-lazy="assets/images/home-slider-2.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-3.jpg" data-lazy="assets/images/home-slider-3.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-4.jpg" data-lazy="assets/images/home-slider-4.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-5.jpg" data-lazy="assets/images/home-slider-5.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-6.jpg" data-lazy="assets/images/home-slider-6.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-7.jpg" data-lazy="assets/images/home-slider-7.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-8.jpg" data-lazy="assets/images/home-slider-8.jpg" alt="Paintball photo" class="home-slider__image">
-        <img src="assets/images/home-slider-9.jpg" data-lazy="assets/images/home-slider-9.jpg" alt="Paintball photo" class="home-slider__image">
+        <img data-src="assets/images/home-slider/home-slider-1.jpg" alt="Paintball photo" class="lozad home-slider__image">
+        <img data-src="assets/images/home-slider/home-slider-2.jpg" alt="Paintball photo" class="lozad home-slider__image">
+        <img data-src="assets/images/home-slider/home-slider-3.jpg" alt="Paintball photo" class="lozad home-slider__image">
+        <img data-src="assets/images/home-slider/home-slider-4.jpg" alt="Paintball photo" class="lozad home-slider__image">
+        <img data-src="assets/images/home-slider/home-slider-5.jpg" alt="Paintball photo" class="lozad home-slider__image">
       </div>
+      <img class="home-slider__arrow home-slider__arrow--next" src="/assets/images/svg/arrow-category.svg">
+      <img class="home-slider__arrow home-slider__arrow--prev" src="/assets/images/svg/arrow-category.svg">
     </section>
     <section class="about-us" id="about-us">
       <div class="container text-center">
         <h2 class="heading heading--h2">O nas</h2>
-        <p class="about-us__description">Legion Pretorians jest powstałą w 2002 roku leśną drużyną paintball’ową.</p>
-        <p class="about-us__description">Długa historia, bogate doświadczenie, najwyższej klasy wyposażenie, wysokie umiejętności oraz doskonała praca zespołowa pozwalają nam podjąć każde wyzwanie.</p>
-        <p class="about-us__description">Pojawiamy się na grach, scenariuszach i manewrach na terenie całego kraju grając i dbając jednocześnie o najwyższy poziom jakościowy polskiego paintball’a.</p>
-        <p class="about-us__description">Obecnie Legion Pretorians to jedna z najbardziej znanych i cenionych drużyn paintballowych w Polsce. Jesteśmy organizatorami 24h gier scenariuszowych Saltus, które odbywają się dwa razy do roku. Staramy się regularnie brać udział bieżących grach, nowościach sprzętowych czy taktyce; organizujemy konkurs filmowo-fotograficzny Tractus.</p>
-      </div>
+        <p class="about-us__description">Czym jest Legion?</p>
+        <p class="about-us__description">Legion Pretorians to leśna drużyna milsimowa, zorganizowana na wzór niepokonanych, rzymskich legionów. Na czele Legionu stoi Konsul; podlegają mu Legaci dowodzący przydzielonymi im Kohortami, złożonymi z szeregowych Legionistów.</p>
+        <p class="about-us__description">Historia Legionu sięga 2002 r., kiedy to Legion został sformowany jako jedna z najstarszych drużyn paintballowych w Polsce.</p>
+        <p class="about-us__description">Na przestrzeni lat drużyna podejmowała rywalizację w grach terenowych - zarówno na polach komercyjnych, jak i w otwartym terenie - a także w zorganizowanych imprezach o zasięgu ogólnokrajowym. Nie stroniliśmy od rozgrywek CQB, startując z powodzeniem w turniejach halowych (w 2013 r. Legion zajął I miejsce w klasyfikacji generalnej Warszawskiego Turnieju Halowego organizowanego na halach FragFactory/KillHouse/Labsektor), ani od rywalizacji drużyn leśnych (w 2013 r. Legion zajął II miejsce w turnieju Leśne Zmagania 3). Graliśmy także w speedball, wystawiając reprezentację Legionu w zmaganiach ligi PLP3 w sezonie 2015.</p>
+        <button class="btn about-us__load-more">
+          <span class="about-us__span">Czytaj więcej</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="about-us__icon">
+            <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+          </svg>
+        </button>
+        <div class="about-us__more">
+          <p class="about-us__description">Podążając za zmieniającymi się trendami, odłożyliśmy zakonserwowane markery
+            paintballowe do legionowych magazynów i parę lat temu chwyciliśmy za przeżywające obecnie swój renesans repliki
+            airsoftowe.</p>
+          <p class="about-us__description">Zorganizowaliśmy dla społeczności szereg imprez o charakterze lokalnym i
+            ogólnokrajowym, w tym dwadzieścia edycji manewrów terenowych SALTUS. Kontynuacją tej serii są organizowane przez
+            Legion manewry terenowe AEGIS zawierające elementy symulacji przy użyciu replik airsoftowych, które realizowane są
+            dwutorowo - jako AEGIS:Unplugged (48h manewry będące kontynuacją paintballowych Saltusów) oraz AEGIS:SpecOps (będących
+            organizowaną za zgodą naszych przyjaciół ze SFORY kontynuacją serii elitarnych i niezwykle wymagających manewrów BLACK
+            OPS).</p>
+          <p class="about-us__description">Legion stale podnosi swoje kwalifikacje terenowe, bierze udział w szkoleniach z
+            zielonej i czarnej taktyki prowadzonych pod czujnym okiem profesjonalistów.</p>
+          <p class="about-us__description">Od początku swojego istnienia stawialiśmy sobie za cel bycie najlepiej wyszkoloną i
+            zorganizowaną drużyną, mogącą stawić czoła nawet najbardziej wymagającym rywalom. Dbamy o dobre imię drużyny i
+            najwyższe standardy gry, starając się, aby Legion utożsamiany był z najwyższymi standardami rozrywki milsimowej.</p>
+          <p class="about-us__description">Dużą wagę przykładamy do sprzętu i wyposażenia. Jesteśmy jednolicie umundurowani
+            (mundury typu w kamuflażu US Woodland i Olive Green, repliki karabinów szturmowych z magazynkami w standardzie
+            M4/AR15); większość z nas korzysta z oporządzenia MIWO Military Praszka.</p>
+          <p class="about-us__description">Legion Pretorians to nie przypadkowa drużyna. Jesteśmy grupą dobrych kolegów, dających
+            sobie silne wsparcie na polu gry i w życiu osobistym, ceniących się i szanujących na co dzień, ale jednocześnie
+            zaciętym i nieustraszonym przeciwnikiem.</p>
+        </div>
+        </div>
     </section>
-    <section class="team" id="team">
+    <section class="team" id="recruitment">
       <div class="recruitment">
         <div class="recruitment__image-box">
-          <img src="assets/images/home-slider-11.jpeg" alt="recruitment photo"
+          <img src="assets/images/home-slider-11.jpg" alt="recruitment photo"
             class="recruitment__image">
         </div>
         <div class="recruitment__content">
           <div class="recruitment__content-wrap">
             <h3 class="heading heading--h3">Rekrutacja</h3>
-            <p class="recruitment__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
-              corrupti consequatur facilis id similique dolor! Temporibus incidunt eos eveniet! Molestiae dolor eos
-              quia eveniet, iusto error provident accusamus ipsa alias.</p>
+            <p class="recruitment__description">Jesteśmy otwarci na przyjmowanie nowych graczy w szeregi Legionu. To bez znaczenia, czy jesteś starym wyjadaczem, czy dopiero rozpoczynasz swoją przygodę z airsoftem. Szczegóły dotyczące procesu rekrutacji prześlemy po kontakcie z nami, wypełnij formularz kontaktowy i wybierz temat <a data-scroll href="#contact" class="link">"Rekrutacja"</a></p>
           </div>
         </div>
       </div>
@@ -100,98 +147,166 @@
     <section class="players" id="players">
       <div class="container text-center">
         <h2 class="heading heading--h2">Skład Legionu</h2>
-        <div class="players-row players-slider">
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
-              <h3 class="player__name">Player 1</h3>
+        <div class="players-slider__content-box">
+          <div class="players-row players-slider">
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
+            </div>
+            <div class="player">
+              <div class="player__content">
+                <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
+                <h3 class="player__name">Player 1</h3>
+              </div>
             </div>
           </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image" class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
-          <div class="player">
-            <div class="player__content">
-              <img src="assets/images/player.jpg" data-lazy="assets/images/player.jpg" alt="Player image"
-                class="player__image">
-              <h3 class="player__name">Player 1</h3>
-            </div>
-          </div>
+          <img class="players-slider__arrow players-slider__arrow--next" src="/assets/images/svg/arrow--black.svg">
+          <img class="players-slider__arrow players-slider__arrow--prev" src="/assets/images/svg/arrow--black.svg">
         </div>
       </div>
     </section>
 
-    <!-- <section class="news" id="news">
+    <section class="news" id="news">
       <div class="container">
+        <h2 class="heading heading--h2 text-center">Aktualności</h2>
         <div class="news-feed"></div>
+        <div class="text-center">
+          <a href="https://www.facebook.com/133461083335748/" class="btn news-feed__link" target="_blank">
+            <span>Zobacz nas na FB</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="btn__icon">
+              <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+            </svg>
+          </a>
+        </div>
       </div>
-    </section> -->
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="gallery-content">
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-1.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-2.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-3.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-4.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-5.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-6.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-7.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-8.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-9.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-10.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-11.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-12.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-13.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+          <div class="gallery__item">
+            <div class="gallery__image-box lozad" data-background-image="/assets/images/gallery/gallery-slider-14.jpg"></div>
+            <p class="gallery__short-desc">Head Hunter - 01.09.2019r.</p>
+          </div>
+        </div>
+        <img class="gallery__arrow gallery__arrow--next" src="/assets/images/svg/arrow--black.svg">
+        <img class="gallery__arrow gallery__arrow--prev" src="/assets/images/svg/arrow--black.svg">
+      </div>
+    </section>
 
     <section class="contact" id="contact">
       <div class="container">
@@ -202,7 +317,7 @@
           <div class="contact__info-box">
             <img src="assets/images/logo/logo-white@x2.png" alt="Logo image" class="contact__logo">
             <div class="contact__description">
-              <a href="https://pretorian-forum.pl" target="_blank" class="contact__link">
+              <a href="https://pretorians.pl/phpbb3/index.php" target="_blank" class="contact__link">
                 <span class="contact__link-content">Sprawdź nasze forum</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="contact__link-icon">
                   <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" /></svg>
@@ -214,22 +329,34 @@
             </div>
           </div>
           <div class="contact__form-box">
-            <form class="form">
+            <form method="POST" class="form" id="contact-form">
               <div class="form__control">
-                <label for="cfname" class="form__label">E-mail</label>
+                <label for="cfname" class="form__label">Imię/Nazwa użytkownika</label>
                 <input class="form__input" type="text" name="cfname" id="cfname">
               </div>
               <div class="form__control">
+                <label for="cfmail" class="form__label">E-mail</label>
+                <input class="form__input" type="text" name="cfmail" id="cfmail">
+              </div>
+              <div class="form__control">
+                <label for="cfsubject" class="form__label">Temat</label>
+                <select class="form__input" name="cfsubject" id="cfsubject">
+                  <option value="recruitment">Rekrutacja</option>
+                  <option value="other">Inne</option>
+                </select>
+              </div>
+              <div class="form__control">
                 <label for="cfcontent" class="form__label">Wiadomość</label>
-                <textarea class="form__textarea" name="cfcontent" id="cfcontent" cols="30" rows="10"></textarea>
+                <textarea class="form__textarea" name="cfcontent" id="cfcontent" cols="30" rows="7"></textarea>
               </div>
               <div class="form__control form__control--row">
-                <label for="cfrodo" class="form__label">Zapoznałem się z <a href="/rodo.html" class="link">polityką
+                <label for="cfrodo" class="form__label">Zapoznałem się z <a href="/assets/policy_pl.pdf" class="link"  target="_blank">polityką
                     prywatności</a> i zgadzam się na przetwarzanie moich danych</label>
                 <input class="form__checkbox" type="checkbox" name="cfrodo" id="cfrodo">
               </div>
+              <div class="form__message-box"></div>
               <div class="form__btn-wrapper">
-                <button type="submit" class="btn">
+                <button type="submit" class="btn form__submit">
                   <span class="btn__text">Wyślij</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="btn__icon">
                     <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" /></svg>
@@ -246,14 +373,11 @@
     <div class="container">
       <p class="footer__copyright">Copyright &copy; Fundacja na Rzecz Rozwoju Kultury i Aktywności Fizycznej Pretorians. All rights reserved.</p>
       <span class="footer__policy">
-        <a href="/rodo.html" class="link">Polityka prywatności</a>
+        <a href="/includes/privacy_policy.pdf" class="link" target="_blank">Polityka prywatności</a>
       </span>
     </div>
   </footer>
 
-  <div id="translations-js" data-share-pl="udostępnił" data-share-en="share"></div>
-
-  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>
 
